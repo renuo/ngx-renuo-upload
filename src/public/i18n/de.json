@@ -1,0 +1,8 @@
+{
+  "home": {
+    "hello": "Hello World"
+  },
+  "utils": {
+    "createdSince": "{{durationString}} erstellt"
+  }
+}

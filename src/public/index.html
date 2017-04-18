@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ng2 Renuo Upload</title>
+
+    <meta name="description" content="ng2 Renuo Upload">
+
+    <!-- base url -->
+    <base href="/">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="assets/icon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/icon/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="assets/icon/manifest.json">
+    <link rel="mask-icon" href="assets/icon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/dropzone/4.3.0/basic.min.css"/>
+    <link rel="stylesheet" href="https://opensource.keycdn.com/fontawesome/4.6.3/font-awesome.min.css"
+          integrity="sha384-Wrgq82RsEean5tP3NK3zWAemiNEXofJsTwTyHmNb/iL3dP/sZJ4+7sOld1uqYJtE" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,800italic,400italic,700italic,500boldd"/>
+
+    <script src="https://cdn.jsdelivr.net/renuo-upload/1.1.1/renuo_upload.min.js"
+            integrity="sha256-8gp6ril6gK0/NTblSISG9Rsk4juC94A46bxoh0RwOCM=" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <my-app>
+      <div class="initial-loading" ng-if="false">
+        <style>
+          body {
+            padding: 0;
+            margin: 0;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 25px;
+            color: #4168c2;
+          }
+
+          .initial-loading {
+            background: #fff;
+            transition: background .3s ease-in-out;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            vertical-align: middle;
+          }
+
+          .initial-loading .center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40%;
+            max-width: 300px;
+            transform: translate(-50%, -50%);
+          }
+
+          .initial-loading img {
+            width: 100%;
+          }
+        </style>
+        <div class="center">
+          <div><img src="assets/img/o_renuo_transparent.png" alt="Renuo"></div>
+        </div>
+      </div>
+    </my-app>
+  </body>
+</html>

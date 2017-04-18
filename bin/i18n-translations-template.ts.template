@@ -1,0 +1,13 @@
+// tslint:disable:max-line-length
+// tslint:disable:ter-max-len
+import { RenuoUploadTranslations } from './i18n-interface';
+
+interface AllRenuoUploadTranslations {
+  [key: string]: RenuoUploadTranslations;
+}
+
+export const allTranslations: AllRenuoUploadTranslations = {
+  // this part is generated from de.json, en.json, ....
+  // {{AllRenuoUploadTranslations}}
+  // until here
+};

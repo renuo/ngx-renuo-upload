@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require 'open3'
+
+stderr_str = nil
+thread = Thread.new do
+  stdout_str, stderr_str, status = Open3.capture3('npm start')
+  puts '--'
+  $stderr.puts 'Unable to start the server!'
+  puts status
+  puts '--'
+  puts stdout_str
+  puts '--'
+  abort(stderr_str)
+end
+
+# try for 15 seconds
+(1..30).each do
+  sleep(0.5)
+  abort(stderr_str) unless thread.alive?
+end
+thread.kill

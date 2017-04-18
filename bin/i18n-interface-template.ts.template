@@ -1,0 +1,5 @@
+export interface RenuoUploadTranslations {
+  // this part is generated from de.json, en.json, ....
+  // {{RenuoUploadTranslationsInterface}}
+  // until here
+}

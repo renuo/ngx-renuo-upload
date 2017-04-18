@@ -1,0 +1,5 @@
+#!/bin/zsh
+source ~/.zshrc
+
+yarn run test
+open coverage/html/index.html

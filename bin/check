@@ -1,0 +1,161 @@
+#!/bin/zsh
+
+source ~/.zshrc
+
+grep -E "[^ ]  [^ ]" src/**/*.ts
+if [ $? -eq 0 ]; then
+  echo -e '\033[31mYou have double spaces in your *.ts files. Please fix them and try again, commit aborted\033[0m'
+  exit 1
+fi
+
+grep -E "[^ ]  [^ ]" src/**/*.html
+if [ $? -eq 0 ]; then
+  echo -e '\033[31mYou have double spaces in your *.html files. Please fix them and try again, commit aborted\033[0m'
+  exit 1
+fi
+
+grep -E "(\{\{ )|( \}\})" src/**/*.html
+if [ $? -eq 0 ]; then
+  echo -e '\033[31mYou have spaces inside double braces {{ or }}. Please remove the spaces.\033[0m'
+  exit 1
+fi
+
+grep -E "[^ ]  [^ ]" src/**/*.scss
+if [ $? -eq 0 ]; then
+  echo -e '\033[31mYou have double spaces in your *.scss files. Please fix them and try again, commit aborted\033[0m'
+  exit 1
+fi
+
+grep -E "[^ ]  [^ ]" src/**/*.json
+if [ $? -eq 0 ]; then
+  echo -e '\033[31mYou have double spaces in your *.json files. Please fix them and try again, commit aborted\033[0m'
+  exit 1
+fi
+
+# hacky workaround because grep on osx is different
+# TODO: remove this if, fix it so it runs on CI too
+uname -a | grep Darwin > /dev/null
+if [ $? -eq 0 ]; then
+  grep -E "\t" src/**/*.html
+  if [ $? -eq 0 ]; then
+    echo -e '\033[31mYou tabs in your *.html files. Please fix them and try again, commit aborted\033[0m'
+    exit 1
+  fi
+
+  grep -E "\t" src/**/*.json
+  if [ $? -eq 0 ]; then
+    echo -e '\033[31mYou tabs in your *.json files. Please fix them and try again, commit aborted\033[0m'
+    exit 1
+  fi
+
+  grep -E "\t" src/**/*.scss
+  if [ $? -eq 0 ]; then
+    echo -e '\033[31mYou tabs in your *.scss files. Please fix them and try again, commit aborted\033[0m'
+    exit 1
+  fi
+
+  grep -E "\t" src/**/*.ts
+  if [ $? -eq 0 ]; then
+    echo -e '\033[31mYou tabs in your *.ts files. Please fix them and try again, commit aborted\033[0m'
+    exit 1
+  fi
+fi
+
+grep -E "{{$" src/**/*.html
+if [ $? -eq 0 ]; then
+  echo -e '\033[31mYou have lonley {{\n in your *.html files. Please fix them and try again, commit aborted\033[0m'
+  exit 1
+fi
+
+grep -E "^[ ]*}}" src/**/*.html
+if [ $? -eq 0 ]; then
+  echo -e '\033[31mYou have lonley }} lines in your *.html files. Please fix them and try again, commit aborted\033[0m'
+  exit 1
+fi
+
+grep -E "^[ ]*translate }}$" src/**/*.html
+if [ $? -eq 0 ]; then
+  echo -e '\033[31mYou have lonley translate }} lines in your *.html files. Please fix them and try again, commit aborted\033[0m'
+  exit 1
+fi
+
+grep -E "^[ ]*>" src/**/*.html
+if [ $? -eq 0 ]; then
+  echo -e '\033[31mYou have lonley > lines in your *.html files. Please fix them and try again, commit aborted\033[0m'
+  exit 1
+fi
+
+grep '.\{141\}' src/**/*.html
+if [ $? -eq 0 ]; then
+  echo -e '\033[31mYou have lines exceeding 141 characters in your *.html files. Please fix them and try again, commit aborted\033[0m'
+  exit 1
+fi
+
+ruby -e "def each_error_file; Dir.glob('src/**/*.*'){|f| yield(f) if File.readlines(f)[-1].strip == '' rescue nil} end; each_error_file{|f| puts(f) }; each_error_file{|f| exit(1) }"
+if [ ! $? -eq 0 ]; then
+  echo -e '\033[31mYou have multiple newlines at the end of the files. Please fix them and try again, commit aborted\033[0m'
+  exit 1
+fi
+
+ruby -e "def each_error_file; Dir.glob('src/**/*.component.ts'){|f| yield(f) if File.read(f).include?(\")\n\nexport\") rescue nil} end; each_error_file{|f| puts(f) }; each_error_file{|f| exit(1) }"
+if [ ! $? -eq 0 ]; then
+  echo -e '\033[31mYou have two newlines between ) and export in your component file. Please fix them and try again, commit aborted\033[0m'
+  exit 1
+fi
+
+DIFF_BEFORE=`git diff | shasum -a 256`
+bin/prettyfy-translations
+DIFF_AFTER=`git diff | shasum -a 256`
+if [[ ! $DIFF_BEFORE == $DIFF_AFTER ]]; then
+  echo -e '\033[31mbin/prettyfy-translations has rearranged some of your translations that has to be reviewed manually, commit aborted\033[0m'
+  exit 1
+fi
+
+nvm use
+
+DIFF_BEFORE=`git diff | shasum -a 256`
+csscomb src/app/**/*.scss
+DIFF_AFTER=`git diff | shasum -a 256`
+if [[ ! $DIFF_BEFORE == $DIFF_AFTER ]]; then
+  csscomb -v src/app/**/*.scss
+  echo -e '\033[31mcsscomb has rearranged some of your css that has to be reviewed manually, commit aborted\033[0m'
+  exit 1
+fi
+
+DIFF_BEFORE=`git diff | shasum -a 256`
+npm run lint
+
+if [ ! $? -eq 0 ]; then
+  echo -e '\033[31mYou have linting errors. Please fix them and try again, commit aborted\033[0m'
+  exit 1
+fi
+
+DIFF_AFTER=`git diff | shasum -a 256`
+if [[ ! $DIFF_BEFORE == $DIFF_AFTER ]]; then
+  echo -e '\033[31mtslint has rearranged some of your TypeScript that has to be reviewed manually, commit aborted\033[0m'
+  exit 1
+fi
+
+grep -i -r 'console.log' src
+if [ $? -eq 0 ]; then
+  echo 'console.log found. Please fix them and try again, commit aborted'
+  exit 1
+fi
+
+grep -i -r 'fdescribe(' src/**/*.spec.ts
+if [ $? -eq 0 ]; then
+  echo 'fdescribe found. Please fix them and try again, commit aborted'
+  exit 1
+fi
+
+grep -i -r 'fit(' src/**/*.spec.ts
+if [ $? -eq 0 ]; then
+  echo 'fit found. Please fix them and try again, commit aborted'
+  exit 1
+fi
+
+npm run test
+if [ ! $? -eq 0 ]; then
+  echo -e '\033[31mTests failed.\033[0m'
+  exit 1
+fi

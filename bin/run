@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+source ~/.zshrc
+
+(sleep 4 && open 'http://ng2-renuo-upload.dev:3000') &
+
+npm start
