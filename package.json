@@ -1,14 +1,14 @@
 {
   "name": "ng2-renuo-upload",
   "version": "0.0.1",
-  "description": "Component for the Renuo Upload",
+  "description": "Angular Component for the Renuo Upload",
   "keywords": [
     "angular2",
     "webpack",
     "typescript"
   ],
   "author": "Renuo <info@renuo.ch>",
-  "homepage": "https://github.com/renuo/vh-webav-frontend",
+  "homepage": "https://github.com/renuo/ng2-renuo-upload",
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && webpack --progress --profile --bail",
