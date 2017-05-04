@@ -2,7 +2,8 @@
   "home": {
     "hello": "Hello World"
   },
-  "utils": {
-    "createdSince": "{{durationString}} erstellt"
+  "pageNotFound": {
+    "description": "Die gewünschte Seite konnte nicht aufgerufen werden.",
+    "title": "404: Seite nicht gefunden"
   }
 }

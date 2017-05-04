@@ -49,9 +49,9 @@ module.exports = function (config) {
         }
       },
       reporters: [{
-        type: 'html',
+        type: 'json',
         dir: 'coverage',
-        subdir: 'html',
+        subdir: 'json',
         file: 'coverage-final.json'
       }]
     },
@@ -63,19 +63,24 @@ module.exports = function (config) {
         html: 'coverage/html',
         'text-summary': null
       },
-      timeoutNotCreated: 3000, // default value
-      timeoutNoMoreFiles: 3000 // default value
+      timeoutNotCreated: 1000, // default value
+      timeoutNoMoreFiles: 1000 // default value
+    },
+
+    webpackServer: {
+      noInfo: true // please don't spam the console when running in karma!
     },
 
     // test results reporter to use
     // possible values: 'dots', 'progress', 'mocha'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    // TODO: as soon as possible, update
+
+    // TODO: Readd karma-remap-instanbul (throws Error: ENOENT: no such file or directory 'src/src/app/app.settings.ts')
     // reporters: ["mocha", "coverage", "karma-remap-istanbul"],
     reporters: ["mocha", "coverage"],
-
     mochaReporter: {
-      output: 'minimal'
+      output: 'minimal',
+      ignoreSkipped: true
     },
 
     // web server port
@@ -93,12 +98,25 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'], // you can also use Chrome
+    browsers: ['Chrome'], // you can also use Chrome
+
+    customLaunchers: {
+      ChromeTravisCi: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: true
   };
+  if (process.env.TRAVIS) {
+    _config.reporters[0] = 'dots';
+    _config.browsers = [
+      'ChromeTravisCi'
+    ];
+  }
 
   config.set(_config);
 

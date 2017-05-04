@@ -44,7 +44,7 @@ interface Global extends GlobalEnvironment {}
 
 // tslint:disable
 declare namespace jasmine {
-  interface Matchers {
+  interface Matchers<T> {
     toEqualData(expected: any): boolean;
   }
 }
