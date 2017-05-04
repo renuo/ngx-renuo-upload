@@ -1,6 +1,4 @@
 import 'core-js/client/shim';
-import 'intl';
-import 'intl/locale-data/jsonp/de-CH';
 import 'reflect-metadata';
 import 'ts-helpers';
 

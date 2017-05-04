@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "ngx-renuo-upload-demo",
+    "develop": "ngx-renuo-upload-develop"
+  }
+}

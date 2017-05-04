@@ -1,6 +1,7 @@
 # @AngularClass
 
 src/app/i18n/generated/*.ts
+.awcache
 
 # Logs
 logs
@@ -19,6 +20,7 @@ lib-cov
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
+compiled
 
 # Users Environment Variables
 .lock-wscript

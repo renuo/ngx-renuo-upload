@@ -14,16 +14,18 @@ npm install -g yarn
 yarn global add yarn
 
 echo -e '\033[32mInstall globally needed node packages\033[0m'
-yarn global add csscomb@3.1.7 typescript tslint node-sass webpack webpack-dev-server karma-cli protractor typescript rimraf
+yarn global add csscomb@3.1.7 typescript tslint node-sass webpack webpack-dev-server karma-cli typescript rimraf
 
 echo -e '\033[32mInstall node packages and get typings\033[0m'
-yarn
+yarn --force
 
 echo -e '\033[32mCopy app settings example if not exists\033[0m'
 cp -n src/app/app.settings.example.ts src/app/app.settings.ts
 
 echo -e '\033[32mSet hosts entry\033[0m'
-grep '127.0.0.1 ng2-renuo-upload.dev' /etc/hosts || echo '127.0.0.1 ng2-renuo-upload.dev' | sudo tee -a /etc/hosts
+grep '127.0.0.1 ngx-renuo-upload.dev' /etc/hosts || echo '127.0.0.1 ngx-renuo-upload.dev' | sudo tee -a /etc/hosts
 
 echo -e '\033[32mSet pre-commit hook\033[0m'
 cat .git/hooks/pre-commit > /dev/null || ln -s ../../bin/check .git/hooks/pre-commit
+
+npm rebuild node-sass

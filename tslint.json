@@ -6,7 +6,6 @@
     "node_modules/tslint-eslint-rules/dist/rules"
   ],
   "rules": {
-    // tslint-eslint rules
     "no-constant-condition": true,
     "no-irregular-whitespace": true,
     "ter-arrow-body-style": [
@@ -65,19 +64,15 @@
         }
       }
     ],
-    // TODO: enable "object-curly-spacing": true,
-    // tslint rules
     "array-type": [
       true,
       "array"
     ],
     "callable-types": true,
-    // NOFIX? "no-void-expression": true,
     "cyclomatic-complexity": [
       true,
       4
     ],
-    // adjust if possible
     "interface-name": [
       false,
       "always-prefix"
@@ -111,12 +106,10 @@
       }
     ],
     "new-parens": true,
-    // adjust if possible
     "no-any": false,
     "no-consecutive-blank-lines": true,
     "no-empty-interface": true,
     "no-namespace": true,
-    // adjust if possible
     "no-string-literal": false,
     "no-string-throw": true,
     "no-switch-case-fall-through": true,
@@ -128,7 +121,6 @@
       "as-needed"
     ],
     "object-literal-shorthand": true,
-    // adjust if possible
     "object-literal-sort-keys": false,
     "ordered-imports": [
       true,
@@ -161,8 +153,6 @@
         "singleline": "never"
       }
     ],
-    // FIX? "typedef": [true, "callSignature", "indexSignature", "parameter", "propertySignature",
-    // "variableDeclarator", "memberVariableDeclarator"],
     "typeof-compare": true,
     "variable-name": [
       true,
@@ -180,7 +170,6 @@
       "check-type",
       "check-typecast"
     ],
-    // angular specific
     "directive-selector": [
       true,
       "attribute",
@@ -213,7 +202,6 @@
     "templates-use-public": true,
     "no-access-missing-member": true,
     "invoke-injectable": true,
-    // microsoft-contrib: security
     "insecure-random": true,
     "no-banned-terms": true,
     "no-cookies": true,
@@ -224,44 +212,32 @@
     "no-eval": true,
     "no-exec-script": true,
     "no-function-constructor-with-string-args": true,
-    // TODO: "no-http-string": [true, "http://www.example.com/?.*", "http://www.examples.com/?.*"],
     "no-inner-html": true,
     "no-octal-literal": true,
-    // TODO: "no-reserved-keywords": true,
     "no-string-based-set-immediate": true,
     "no-string-based-set-interval": true,
     "no-string-based-set-timeout": true,
     "non-literal-require": true,
     "possible-timing-attack": false,
-    // microsoft-contrib: common bugs and correctness
     "forin": true,
     "jquery-deferred-must-complete": true,
     "label-position": true,
-    // FIX? "mocha-avoid-only": true,
-    // FIX? "mocha-no-side-effect-code": true,
     "no-arg": true,
-    // FIX? "no-constant-condition": true,
     "no-control-regex": true,
     "no-duplicate-case": true,
     "no-duplicate-variable": true,
     "no-empty": false,
-    // FIX? "no-for-in-array": true,
     "no-invalid-regexp": true,
     "no-invalid-this": true,
     "no-jquery-raw-elements": true,
     "no-regex-spaces": true,
     "no-sparse-arrays": true,
-    // FIX? "no-stateless-class": true,
-    // FIX? "no-string-literal": true,
     "no-unnecessary-bind": true,
     "no-unnecessary-override": true,
     "no-unsafe-finally": true,
-    // too performance intensive   "no-use-before-declare": true,
     "no-with-statement": true,
     "promise-must-complete": true,
     "radix": true,
-    // FIX? "restrict-plus-operands": true,
-    // // the plus operand should really only be used for strings and numbers
     "switch-default": true,
     "triple-equals": [
       true,
@@ -271,18 +247,13 @@
     "use-isnan": true,
     "use-named-parameter": true,
     "valid-typeof": true,
-    // microsoft-contrib: code clarity
     "adjacent-overload-signatures": true,
-    // NOFIX? "arrow-parens": false,
     "arrow-parens": [
       true,
       "ban-single-arg-parens"
     ],
     "class-name": true,
     "comment-format": true,
-    // NOFIX? "completed-docs": [true, "classes"],
-    // FIX? "export-name": true,
-    // FIX? "function-name": true,
     "import-name": true,
     "import-spacing": true,
     "max-file-line-count": true,
@@ -293,21 +264,13 @@
         "ignore-parameters-to-function-regex": "describe"
       }
     ],
-    // FIX? "missing-jsdoc": true,
     "mocha-unneeded-done": true,
     "no-construct": true,
     "no-default-export": true,
-    // FIX? "no-empty-interfaces": true,
     "no-for-in": true,
     "no-function-expression": true,
-    // NOFIX? "no-inferrable-types": false, // turn no-inferrable-types off in order to make the code consistent in its use of type decorations
-    // NOFIX? "no-multiline-string": true, // multiline-strings often introduce unnecessary whitespace into the string literals
-    // NOFIX? "no-null-keyword": false, // turn no-null-keyword off and use undefined to mean not initialized and null to mean without a value
-    // NOFIX? "no-parameter-properties": true,
-    // NOFIX? "no-relative-imports": true,
     "no-require-imports": true,
     "no-shadowed-variable": true,
-    // NOFIX? "no-suspicious-comment": true,
     "no-typeof-undefined": true,
     "no-unnecessary-field-initialization": true,
     "no-unnecessary-local-variable": true,
@@ -315,12 +278,9 @@
     "no-var-keyword": true,
     "no-var-self": true,
     "one-variable-per-declaration": true,
-    // NOFIX? "only-arrow-functions": false,  // there are many valid reasons to declare a function
     "prefer-array-literal": true,
     "prefer-for-of": true,
     "underscore-consistent-invocation": true,
-    // microsoft-contrib: whitespace
-    // TODO: fix "align": [true, "parameters", "arguments", "statements"],
     "curly": true,
     "eofline": true,
     "indent": [
@@ -338,13 +298,11 @@
       "check-else",
       "check-whitespace"
     ],
-    // microsoft-contrib: controversial and configurable
-    // NOFIX "ban": false,
-    // NOFIX "no-internal-module": false, // only enable this if you are not using internal modules
     "no-mergeable-namespace": true,
     "no-reference": true,
     "no-unexternalized-strings": true,
     "no-angle-bracket-type-assertion": false,
-    "prefer-type-cast": true
+    "prefer-type-cast": true,
+    "no-non-null-assertion": true
   }
 }
