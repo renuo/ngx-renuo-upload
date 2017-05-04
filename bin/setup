@@ -14,7 +14,7 @@ npm install -g yarn
 yarn global add yarn
 
 echo -e '\033[32mInstall globally needed node packages\033[0m'
-yarn global add csscomb@3.1.7 typescript tslint node-sass webpack webpack-dev-server karma-cli protractor typescript rimraf
+yarn global add csscomb@3.1.7 typescript tslint node-sass webpack webpack-dev-server karma-cli typescript rimraf
 
 echo -e '\033[32mInstall node packages and get typings\033[0m'
 yarn
