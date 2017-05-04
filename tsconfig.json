@@ -13,13 +13,10 @@
     "skipLibCheck": false,
     "types": [
       "core-js",
-      "google.analytics",
-      "googlemaps",
       "jasmine",
       "lodash",
-      "node",
       "selenium-webdriver",
-      "stripe-checkout"
+      "node"
     ]
   },
   "compileOnSave": false,

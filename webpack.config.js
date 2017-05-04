@@ -173,18 +173,10 @@ module.exports = function makeWebpackConfig() {
         // TODO: We need to rename it, so there is no confusion between ENV (env vars) and ENV (development, test, production).
         ENV: JSON.stringify(npm_lifecycle_event),
         BASE_FRONTEND_URL: JSON.stringify(process.env.BASE_FRONTEND_URL),
-        BASE_BACKEND_URL: JSON.stringify(process.env.BASE_BACKEND_URL),
-        API_ENDPOINT: JSON.stringify(process.env.API_ENDPOINT),
-        FIREBASE_API_KEY: JSON.stringify(process.env.FIREBASE_API_KEY),
-        FIREBASE_APP_NAME: JSON.stringify(process.env.FIREBASE_APP_NAME),
         RENUO_UPLOAD_SIGNING_URL: JSON.stringify(process.env.RENUO_UPLOAD_SIGNING_URL),
         RENUO_UPLOAD_API_KEY: JSON.stringify(process.env.RENUO_UPLOAD_API_KEY),
         SENTRY_DSN: JSON.stringify(process.env.SENTRY_DSN),
-        GIT_REVISION: JSON.stringify(process.env.GIT_REVISION),
-        GOOGLE_MAPS_API: JSON.stringify(process.env.GOOGLE_MAPS_API),
-        GOOGLE_MAPS_COUNTRY: JSON.stringify(process.env.GOOGLE_MAPS_COUNTRY),
-        STRIPE_CLIENT_ID: JSON.stringify(process.env.STRIPE_CLIENT_ID),
-        STRIPE_PUBLISHABLE_KEY: JSON.stringify(process.env.STRIPE_PUBLISHABLE_KEY)
+        GIT_REVISION: JSON.stringify(process.env.GIT_REVISION)
       }
     })
   ];
