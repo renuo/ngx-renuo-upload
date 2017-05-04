@@ -3,6 +3,8 @@ Error.stackTraceLimit = Infinity;
 require('core-js/client/shim');
 require('reflect-metadata');
 
+require('intl');
+require('intl/locale-data/jsonp/de-CH');
 require('ts-helpers');
 
 require('zone.js/dist/zone');
