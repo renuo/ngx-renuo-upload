@@ -58,8 +58,6 @@
     "@angular/compiler-cli": "^4.1.0",
     "@angular/language-service": "^4.1.0",
     "@angular/platform-server": "^4.1.0",
-    "@types/google.analytics": "^0.0.33",
-    "@types/googlemaps": "^3.25.38",
     "@types/jasmine": "^2.5.45",
     "@types/lodash": "ts2.1",
     "@types/node": "^6.0.38",
