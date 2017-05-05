@@ -5,6 +5,8 @@ deploy:
   project: "ngx-renuo-upload-develop"
   on:
       branch: feature/change-firebase-configs
+before_deploy:
+- yarn build
 language: node_js
 dist: trusty
 before_script:
