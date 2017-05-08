@@ -4,8 +4,8 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DemoComponent } from './demo/demo.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HomeComponent } from './static-pages/home/home.component';
 
 const APP_PROVIDERS: any = [
   //Sets the default locale
@@ -22,7 +22,7 @@ const APP_PROVIDERS: any = [
   ],
   declarations: [
     AppComponent,
-    HomeComponent,
+    DemoComponent,
     PageNotFoundComponent
   ],
   providers: [
