@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'ru-app',
   styleUrls: [
     './scss/app.scss'
   ],
