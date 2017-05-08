@@ -49,9 +49,9 @@ module.exports = function (config) {
         }
       },
       reporters: [{
-        type: 'json',
+        type: 'html',
         dir: 'coverage',
-        subdir: 'json',
+        subdir: 'html',
         file: 'coverage-final.json'
       }]
     },
