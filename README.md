@@ -1,6 +1,7 @@
 # ngx-renuo-upload
 This is a component for the renuo upload (https://github.com/renuo/renuo-upload)
 
+[![Code Climate](https://codeclimate.com/github/renuo/ngx-renuo-upload.png)](https://codeclimate.com/github/renuo/ngx-renuo-upload)
 [![Build Status](https://travis-ci.org/renuo/ngx-renuo-upload.svg?branch=master)](https://travis-ci.org/renuo/ngx-renuo-upload)
 [![Build Status](https://travis-ci.org/renuo/ngx-renuo-upload.svg?branch=develop)](https://travis-ci.org/renuo/ngx-renuo-upload)
 [![Build Status](https://travis-ci.org/renuo/ngx-renuo-upload.svg?branch=testing)](https://travis-ci.org/renuo/ngx-renuo-upload)
