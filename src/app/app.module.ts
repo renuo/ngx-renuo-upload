@@ -9,7 +9,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RequestService } from './services/request/request.service';
 import { SigningService } from './services/signing/signing.service';
 import { UploadSerice } from './services/upload/upload.service';
-import { SingleUploadComponent } from './single-upload/single-upload.component';
 
 const APP_PROVIDERS: any = [
   //Sets the default locale
@@ -27,7 +26,6 @@ const APP_PROVIDERS: any = [
   declarations: [
     AppComponent,
     DemoComponent,
-    SingleUploadComponent,
     PageNotFoundComponent
   ],
   providers: [
