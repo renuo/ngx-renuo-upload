@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SingleUploadComponent } from './single-upload/single-upload.component';
 
 const APP_PROVIDERS: any = [
   //Sets the default locale
@@ -23,6 +24,7 @@ const APP_PROVIDERS: any = [
   declarations: [
     AppComponent,
     DemoComponent,
+    SingleUploadComponent,
     PageNotFoundComponent
   ],
   providers: [
