@@ -5,7 +5,7 @@ import { RequestService } from '../request/request.service';
 
 @Injectable()
 export class SigningService {
-  private requestService: RequestService = new RequestService();
+  constructor(private requestService: RequestService) {}
 
   public getUploadInfoAndSignature(): Observable<RequestReponse> {
     return this.requestService.makeRequest({
