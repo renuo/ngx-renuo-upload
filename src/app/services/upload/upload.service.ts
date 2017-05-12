@@ -5,8 +5,7 @@ import { RequestService } from '../request/request.service';
 export class UploadSerice {
   constructor(private requestService: RequestService) {}
 
-  public uploadToAmazon(response: string, file: File) {
-    const responseJSON: SigningResponse = JSON.parse(response);
+  public uploadToAmazon(responseJSON: SigningResponse, file: File) {
     const formData = new FormData();
 
     this.buildForm(formData, responseJSON);

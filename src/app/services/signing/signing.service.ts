@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { AppSettings } from '../../app.settings';
-import { RequestService } from '../request/request.service';
 
 @Injectable()
 export class SigningService {
-  constructor(private requestService: RequestService) {}
+  constructor(private http: Http) {}
 
-  public getUploadInfoAndSignature(): Observable<RequestReponse> {
-    return this.requestService.makeRequest({
-      method: 'POST',
-      url: AppSettings.RENUO_UPLOAD_SIGNING_URL + '?api_key=' + AppSettings.RENUO_UPLOAD_API_KEY
-    });
+  public getUploadInfoAndSignature(): Observable<SigningResponse> {
+    return this.http.post(AppSettings.RENUO_UPLOAD_SIGNING_URL + '?api_key=' + AppSettings.RENUO_UPLOAD_API_KEY, '')
+      .map(response => response.json() || { });
   }
 }

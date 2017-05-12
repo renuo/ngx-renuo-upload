@@ -23,10 +23,22 @@ describe('UploadService', () => {
 
   describe('uploadToAmazon', () => {
     it('sends the correct data', (done => {
-      const fakeResponse = '{"url":"https://renuo-upload/","data":{"key":"upload-demod","acl":"public-read","policy":"Fsh",' +
-        '"x_amz_algorithm":"dfe","x_amz_credential":"AKIAJP5UELF524C2NQFA/20170512/eu-central-1/s3/aws4_request","x_amz_expires":2000,' +
-        '"x_amz_signature":"qwerty","x_amz_date":"20170512T135325Z","utf8":"✓"},"file_prefix":"pre/fix",' +
-        '"file_url_path":"//renuo-upload.renuoapp.ch/o/upload-demo-testing"}';
+      const fakeResponse = {
+        url: 'https://renuo-upload/',
+        data: {
+          key: 'upload-demod',
+          acl: 'public-read',
+          policy: 'Fsh',
+          x_amz_algorithm: 'dfe',
+          x_amz_credential: 'AKIAJP5UELF524C2NQFA/20170512/eu-central-1/s3/aws4_request',
+          x_amz_expires: 2000,
+          x_amz_signature: 'qwerty',
+          x_amz_date: '20170512T135325Z',
+          utf8: '✓'
+        },
+        file_prefix: 'pre/fix',
+        file_url_path: '//renuo-upload.renuoapp.ch/o/upload-demo-testing'
+      };
       const spy = spyOn(requestService, 'makeRequest');
       spy.and.callThrough();
       service.uploadToAmazon(fakeResponse, new File([''], 'nice/file')).subscribe(status => {
