@@ -8,5 +8,4 @@ import { I18n } from '../i18n/i18n';
 })
 export class DemoComponent {
   i18n = I18n;
-
 }
