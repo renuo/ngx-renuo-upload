@@ -15,6 +15,7 @@ This is a component for the renuo upload (https://github.com/renuo/renuo-upload)
 
 ### Single Image
 #### Simple usage
+
 ```angular2html
 <ru-img [src]="picture"></ru-img>
 ```
@@ -22,10 +23,10 @@ This is a component for the renuo upload (https://github.com/renuo/renuo-upload)
 #### Advanced usage
 ```angular2html
 <ru-img [src]="picture"  
-    [dimensions]="'400x400'" 
-    [quality]="10" 
-    [roundedCorners]="60" [background]="'10,10,255'"
-    [watermark]="'https://www.renuo.ch/images/logo.png'">
+    dimensions="400x400" 
+    quality="10" 
+    roundedCorners="60" background="10,10,255"
+    watermark="https://www.renuo.ch/images/logo.png">
 </ru-img>
 ```
 
