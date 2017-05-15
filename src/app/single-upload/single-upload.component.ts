@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { I18n } from '../i18n/i18n';
 
 @Component({
@@ -7,14 +7,25 @@ import { I18n } from '../i18n/i18n';
   templateUrl: 'single-upload.component.html'
 })
 export class SingleUploadComponent {
+  @Input() acceptedFiles: string = 'image/*';
+  @Input() maxFileSize: number = 10; //MB
+  @Output() onFileAdd = new EventEmitter<File>();
+  @Output() onFileRemove = new EventEmitter<File>();
+  @Output() onFileChange = new EventEmitter<File>();
   i18n = I18n;
   file: File = null;
   buttonText: string = 'Upload a file';
   buttonStyle: string = 'hidden';
+  alertText: string;
+  alertStyle: string = 'hidden';
 
   upload(event: Event) {
+    const files = event.srcElement.files;
+    if (files.length === 0) { return; }
+
     this.removeFile();
-    this.getFile(<HTMLInputElement> event.srcElement);
+    this.addFile(files[0]);
+    this.checkFileSize();
 
     //this will be replace with the upload function
     this.updateProgressBar(100);
@@ -22,8 +33,10 @@ export class SingleUploadComponent {
 
   removeFile() {
     this.file = null;
+    this.emitFileRemoved();
     this.resetButton();
     this.updateProgressBar(0);
+    this.removeAlert();
   }
 
   private updateProgressBar(num: number) {
@@ -34,9 +47,26 @@ export class SingleUploadComponent {
     }
   }
 
-  private getFile(fileInput: HTMLInputElement) {
-    this.file = <File> fileInput.files[0];
+  private addFile(file: File) {
+    this.file = file;
     this.buttonText = this.file.name;
+    this.emitFileAdded();
+  }
+
+  private checkFileSize() {
+    if (this.file.size / 1000000 > this.maxFileSize) {
+      this.addAlert('File is too big');
+    }
+  }
+
+  private removeAlert() {
+    this.alertStyle = 'hidden';
+    this.alertText = '';
+  }
+
+  private addAlert(alertText: string) {
+    this.alertStyle = '';
+    this.alertText = alertText;
   }
 
   private showRemoveButton() {
@@ -46,5 +76,19 @@ export class SingleUploadComponent {
   private resetButton() {
     this.buttonStyle = 'hidden';
     this.buttonText = 'Upload a file';
+  }
+
+  private emitFileAdded() {
+    this.emitFileChanged();
+    this.onFileAdd.emit(this.file);
+  }
+
+  private emitFileRemoved() {
+    this.emitFileChanged();
+    this.onFileRemove.emit(null);
+  }
+
+  private emitFileChanged() {
+    this.onFileChange.emit(this.file);
   }
 }

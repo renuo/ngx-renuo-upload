@@ -1,6 +1,6 @@
 @import '../scss/variables.style';
 
-div {
+.upload-box {
   width: 215px;
 }
 
@@ -11,11 +11,11 @@ input {
 label {
   display: inline-block;
 
-  color: white;
-  background-color: #0275d8;
+  color: $upload-button-font;
+  background-color: $upload-button-bg;
 
   &:hover {
-    background-color: #286090;
+    background-color: $upload-button-bg-hover;
   }
 }
 
@@ -47,13 +47,13 @@ button {
   text-align: center;
   text-decoration: none;
 
-  color: white;
+  color: $delete-button-font;
   border: none;
   border-radius: 50%;
-  background-color: #d9534f;
+  background-color: $delete-button-bg;
 
   &:hover {
-    background-color: #c9302c;
+    background-color: $delete-button-bg-hover;
   }
 }
 
@@ -67,7 +67,7 @@ progress::-webkit-progress-bar {
 
 progress::-webkit-progress-value {
   border-radius: 12px;
-  background: #0275d8;
+  background: $upload-button-bg;
 }
 
 progress {
@@ -75,4 +75,16 @@ progress {
 
   border-radius: 14px;
   background: transparent;
+}
+
+.alert {
+  width: 150px;
+  padding: 10px;
+
+  text-align: center;
+
+  color: $alert-danger-color;
+  border-color: $alert-danger-color;
+  border-radius: 5px;
+  background-color: $alert-danger-bg;
 }
