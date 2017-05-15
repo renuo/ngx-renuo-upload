@@ -93,7 +93,7 @@ module.exports = function makeWebpackConfig() {
             loader: "awesome-typescript-loader",
             options: {
               useCache: true,
-              configFileName: isTest ? 'tsconfig.test.json' : isProd? 'tsconfig.aot.json' : 'tsconfig.jit.json'
+              configFileName: isTest ? 'tsconfig.test.json' : isProd? 'tsconfig.aot.json' : 'tsconfig.json'
             }
           },
           {
