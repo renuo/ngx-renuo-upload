@@ -6,6 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RequestService } from './services/request/request.service';
+import { SigningService } from './services/signing/signing.service';
+import { UploadSerice } from './services/upload/upload.service';
 
 const APP_PROVIDERS: any = [
   //Sets the default locale
@@ -26,7 +29,10 @@ const APP_PROVIDERS: any = [
     PageNotFoundComponent
   ],
   providers: [
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    UploadSerice,
+    SigningService,
+    RequestService
   ],
   bootstrap: [AppComponent]
 })
