@@ -5,12 +5,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
+import { ImageComponent } from './image/image.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ImageService } from './services/image/image.service';
 
 const APP_PROVIDERS: any = [
   //Sets the default locale
   {provide: LOCALE_ID, useValue: 'de-CH'},
-  HttpModule
+  HttpModule,
+  ImageService
 ];
 
 // tslint:disable-next-line:max-classes-per-file
@@ -23,7 +26,8 @@ const APP_PROVIDERS: any = [
   declarations: [
     AppComponent,
     DemoComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ImageComponent
   ],
   providers: [
     APP_PROVIDERS
