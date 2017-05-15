@@ -1,5 +1,6 @@
 # ngx-renuo-upload
-This is a component for the renuo upload (https://github.com/renuo/renuo-upload)
+
+This is a component for the renuo upload (<https://github.com/renuo/renuo-upload>)
 
 [![Code Climate](https://codeclimate.com/github/renuo/ngx-renuo-upload.png)](https://codeclimate.com/github/renuo/ngx-renuo-upload)
 [![Build Status](https://travis-ci.org/renuo/ngx-renuo-upload.svg?branch=master)](https://travis-ci.org/renuo/ngx-renuo-upload)
@@ -7,11 +8,12 @@ This is a component for the renuo upload (https://github.com/renuo/renuo-upload)
 [![Build Status](https://travis-ci.org/renuo/ngx-renuo-upload.svg?branch=testing)](https://travis-ci.org/renuo/ngx-renuo-upload)
 
 ## Important Links
-* https://github.com/renuo/ngx-renuo-upload
-* https://upload-demo.renuoapp.ch
-* https://upload-demo-develop.renuoapp.ch
 
-## How to use?
+* <https://github.com/renuo/ngx-renuo-upload>
+* <https://upload-demo.renuoapp.ch>
+* <https://upload-demo-develop.renuoapp.ch>
+
+## How to use?<>
 
 Coming Soon
 
@@ -35,9 +37,10 @@ bin/setup
 
 The deployment of the demo page will run automatically on Firebase with Travis.
 
-##### Demo Pages
-* https://upload-demo.renuoapp.ch
-* https://upload-demo-develop.renuoapp.ch
+#### Demo Pages
+
+* <https://upload-demo.renuoapp.ch>
+* <https://upload-demo-develop.renuoapp.ch>
 
 #### Manual Deployment
 
@@ -46,7 +49,7 @@ yarn build
 firebase deploy
 ```
 
-See https://firebase.google.com/docs/cli/
+See <https://firebase.google.com/docs/cli/>
 
 ### Tests
 
@@ -84,7 +87,7 @@ bin/coverage
 * `bin/generate-i18n`: generate new translation keys
 * `bin/prettify-translations`: sorts the translation keys
 * `bin/setup`: sets up the project
-* `bin/run`: runs a local instance of the server. Accessible via `http://lawoon-frontend.dev:3000/`
+* `bin/run`: runs a local instance of the server
 
 ### Run server
 
@@ -100,7 +103,8 @@ To update dependencies it's best to use:
 yarn upgrade-interactive
 ```
 
-## Problems?
+## Problems
+
 If there are problems with the project, feel free to contact Pascal Andermatt.
 
 ![Pascal Andermatt](https://s.gravatar.com/avatar/1ee132b4d89f7d2e82db5717eefdcd86?s=80)
@@ -110,4 +114,5 @@ If there are problems with the project, feel free to contact Pascal Andermatt.
 Coypright 2017 [Renuo AG](https://www.renuo.ch/).
 
 ### MIT License
+
 See [LICENSE](LICENSE) file.
