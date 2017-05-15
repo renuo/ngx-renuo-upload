@@ -8,6 +8,9 @@ import { DemoComponent } from './demo/demo.component';
 import { ImageComponent } from './image/image.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ImageService } from './services/image/image.service';
+import { RequestService } from './services/request/request.service';
+import { SigningService } from './services/signing/signing.service';
+import { UploadSerice } from './services/upload/upload.service';
 
 const APP_PROVIDERS: any = [
   //Sets the default locale
@@ -30,7 +33,10 @@ const APP_PROVIDERS: any = [
     ImageComponent
   ],
   providers: [
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    UploadSerice,
+    SigningService,
+    RequestService
   ],
   bootstrap: [AppComponent]
 })

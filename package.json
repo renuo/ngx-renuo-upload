@@ -21,7 +21,7 @@
     "lint": "tslint -c tslint.json \"src/**/*.ts\" --fix",
     "postinstall": "npm run webdriver-update",
     "pree2e": "npm run webdriver-update -- --standalone",
-    "server": "webpack-dashboard -- webpack-dev-server --inline --port 3000 --public http://ngx-renuo-upload.dev/:3000",
+    "server": "webpack-dashboard -- webpack-dev-server --inline --port 3000 --public ngx-renuo-upload.dev:3000",
     "server-without-dashboard": "webpack-dev-server --inline --port 3000",
     "server:prod": "http-server -p 3000 dist --cors",
     "start": "npm run server",
