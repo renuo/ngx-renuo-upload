@@ -1,6 +1,15 @@
 @import '../scss/variables.style';
 
-h1 {
-  padding-top: 100px;
-  padding-bottom: 100px;
+body {
+  background-color: ghostwhite;
+}
+
+.container {
+  max-width: 500px;
+  margin: auto;
+  padding: 50px;
+
+  border: 1px solid;
+  border-radius: 20px;
+  background-color: white;
 }

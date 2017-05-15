@@ -6,15 +6,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SingleUploadComponent } from './single-upload/single-upload.component';
 import { RequestService } from './services/request/request.service';
 import { SigningService } from './services/signing/signing.service';
+import { SingleUploadService } from './services/single-upload/single-upload.service';
 import { UploadSerice } from './services/upload/upload.service';
+import { CustomSingleUploadComponent } from './single-custom-upload/custom-single-upload.component';
+import { SingleUploadComponent } from './single-upload/single-upload.component';
 
 const APP_PROVIDERS: any = [
   //Sets the default locale
   {provide: LOCALE_ID, useValue: 'de-CH'},
-  HttpModule
+  HttpModule,
+  UploadSerice,
+  SigningService,
+  RequestService,
+  SingleUploadService
 ];
 
 // tslint:disable-next-line:max-classes-per-file
@@ -28,13 +34,11 @@ const APP_PROVIDERS: any = [
     AppComponent,
     DemoComponent,
     SingleUploadComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CustomSingleUploadComponent
   ],
   providers: [
-    APP_PROVIDERS,
-    UploadSerice,
-    SigningService,
-    RequestService
+    APP_PROVIDERS
   ],
   bootstrap: [AppComponent]
 })

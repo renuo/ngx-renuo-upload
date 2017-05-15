@@ -1,7 +1,6 @@
-<div class="upload-box">
-  <input type="file" id="upload-simple" [accept]="acceptedFiles" (change)="upload($event)">
-  <label for="upload-simple"><span>{{buttonText}}</span></label>
-  <button [ngClass]="buttonStyle" (click)="removeFile()">X</button>
+<div>
+  <input type="file" [accept]="acceptedFiles" (change)="upload($event)">
 </div>
-<progress max="100" value="0" id="progress"></progress>
-<div class="alert" [ngClass]="alertStyle">{{alertText}}</div>
+<div>
+  <progress max="100" [value]="progressInPercent" id="progress"></progress>
+</div>

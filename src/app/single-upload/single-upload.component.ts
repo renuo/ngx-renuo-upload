@@ -1,80 +1,71 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { I18n } from '../i18n/i18n';
+import { SingleUploadService } from '../services/single-upload/single-upload.service';
 
 @Component({
   selector: 'ru-single-upload',
-  styleUrls: ['single-upload.component.scss'],
   templateUrl: 'single-upload.component.html'
 })
 export class SingleUploadComponent {
   @Input() acceptedFiles: string = 'image/*';
   @Input() maxFileSize: number; //MB
   @Output() onFileAdd = new EventEmitter<File>();
-  @Output() onFileRemove = new EventEmitter<File>();
+  @Output() onFileUpload = new EventEmitter<File>();
+  @Output() onFileRemove = new EventEmitter<boolean>();
   @Output() onFileChange = new EventEmitter<File>();
-  file: File;
-  buttonText: string = I18n.t.upload.buttonText;
-  buttonStyle: string = 'hidden';
+  file?: File;
+  uploadFinished: boolean = false;
+  progressInPercent: number = 0;
   alertText: string;
-  alertStyle: string = 'hidden';
+
+  constructor(private ref: ChangeDetectorRef, private singleUploadService: SingleUploadService) {}
 
   upload(event: Event) {
-    const files = event.srcElement.files;
-    if (files.length === 0) { return; }
-
     this.removeFile();
-    this.addFile(files[0]);
-    this.checkFileSize();
 
-    //this will be replace with the upload function
-    this.updateProgressBar(100);
+    const uploadInput = <HTMLInputElement> event.srcElement;
+    const files = uploadInput.files;
+
+    this.addFile(files);
+
+    if (this.file) {
+      if (this.file.size / 1000000 > this.maxFileSize) {
+        this.addAlert(I18n.t.upload.error.fileTooLarge);
+      } else {
+        this.singleUploadService.upload(this.file).subscribe(num => {
+          this.progressInPercent = num;
+          this.ref.detectChanges();
+
+          if (num > 99) {
+            this.uploadFinished = true;
+            this.emitFileUploaded();
+          }
+        });
+      }
+    }
   }
 
   removeFile() {
-    this.file = null;
+    this.progressInPercent = 0;
+    this.uploadFinished = false;
+    this.file = undefined;
     this.emitFileRemoved();
-    this.resetButton();
-    this.updateProgressBar(0);
     this.removeAlert();
   }
 
-  private updateProgressBar(num: number) {
-    const progress = <HTMLProgressElement> document.getElementById('progress');
-    progress.value = num;
-    if (num > 99) {
-      this.showRemoveButton();
-    }
-  }
-
-  private addFile(file: File) {
-    this.file = file;
-    this.buttonText = this.file.name;
+  private addFile(files: FileList | null) {
+    if (!files) { return; }
+    if (files.length === 0) { return; }
+    this.file = files[0];
     this.emitFileAdded();
   }
 
-  private checkFileSize() {
-    if (this.file.size / 1000000 > this.maxFileSize) {
-      this.addAlert(I18n.t.upload.error.fileTooLarge);
-    }
-  }
-
   private removeAlert() {
-    this.alertStyle = 'hidden';
     this.alertText = '';
   }
 
   private addAlert(alertText: string) {
-    this.alertStyle = '';
     this.alertText = alertText;
-  }
-
-  private showRemoveButton() {
-    this.buttonStyle = '';
-  }
-
-  private resetButton() {
-    this.buttonStyle = 'hidden';
-    this.buttonText = I18n.t.upload.buttonText;
   }
 
   private emitFileAdded() {
@@ -84,10 +75,14 @@ export class SingleUploadComponent {
 
   private emitFileRemoved() {
     this.emitFileChanged();
-    this.onFileRemove.emit(null);
+    this.onFileRemove.emit(true);
   }
 
   private emitFileChanged() {
     this.onFileChange.emit(this.file);
+  }
+
+  private emitFileUploaded() {
+    this.onFileUpload.emit(this.file);
   }
 }
