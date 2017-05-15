@@ -8,13 +8,12 @@ import { I18n } from '../i18n/i18n';
 })
 export class SingleUploadComponent {
   @Input() acceptedFiles: string = 'image/*';
-  @Input() maxFileSize: number = 10; //MB
+  @Input() maxFileSize: number; //MB
   @Output() onFileAdd = new EventEmitter<File>();
   @Output() onFileRemove = new EventEmitter<File>();
   @Output() onFileChange = new EventEmitter<File>();
-  i18n = I18n;
-  file: File = null;
-  buttonText: string = 'Upload a file';
+  file: File;
+  buttonText: string = I18n.t.upload.buttonText;
   buttonStyle: string = 'hidden';
   alertText: string;
   alertStyle: string = 'hidden';
@@ -55,7 +54,7 @@ export class SingleUploadComponent {
 
   private checkFileSize() {
     if (this.file.size / 1000000 > this.maxFileSize) {
-      this.addAlert('File is too big');
+      this.addAlert(I18n.t.upload.error.fileTooLarge);
     }
   }
 
@@ -75,7 +74,7 @@ export class SingleUploadComponent {
 
   private resetButton() {
     this.buttonStyle = 'hidden';
-    this.buttonText = 'Upload a file';
+    this.buttonText = I18n.t.upload.buttonText;
   }
 
   private emitFileAdded() {
