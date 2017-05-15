@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { RequestReponse } from '../request/request-reponse.interface';
 import { RequestService } from '../request/request.service';
 import { SigningResponse } from '../signing/signing-response.interface';
 
@@ -6,7 +8,7 @@ import { SigningResponse } from '../signing/signing-response.interface';
 export class UploadSerice {
   constructor(private requestService: RequestService) {}
 
-  uploadToAmazon(responseJSON: SigningResponse, file: File) {
+  uploadToAmazon(responseJSON: SigningResponse, file: File): Observable<RequestReponse> {
     const formData = new FormData();
 
     this.buildForm(formData, responseJSON);
