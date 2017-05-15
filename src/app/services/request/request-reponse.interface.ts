@@ -1,5 +1,5 @@
-interface RequestReponse {
+export interface RequestReponse {
   status: number;
-  response?: any;
-  progress?: number;
+  response?: string;
+  progress_in_percent: number;
 }

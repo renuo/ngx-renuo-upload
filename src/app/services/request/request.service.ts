@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
+import { RequestOption } from './request-options.interface';
+import { RequestReponse } from './request-reponse.interface';
 
 @Injectable()
 export class RequestService {
-  public makeRequest(options: RequestOption): Observable<RequestReponse> {
+  makeRequest(options: RequestOption): Observable<RequestReponse> {
     return Observable.create((observer: Observer<RequestReponse>) => {
       const xhr = new XMLHttpRequest();
 
@@ -19,7 +21,7 @@ export class RequestService {
       xhr.upload.onprogress = evt => {
         observer.next({
           status: xhr.status,
-          progress: (evt.loaded / evt.total) * 100
+          progress_in_percent: (evt.loaded / evt.total) * 100
         });
       };
 
@@ -27,7 +29,8 @@ export class RequestService {
         if (xhr.readyState === 4 && xhr.status === 200) {
           observer.next({
             response: xhr.response,
-            status: xhr.status
+            status: xhr.status,
+            progress_in_percent: 100
           });
           observer.complete();
         }

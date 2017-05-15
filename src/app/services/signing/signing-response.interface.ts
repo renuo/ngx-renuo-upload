@@ -1,4 +1,4 @@
-interface SigningResponse {
+export interface SigningResponse {
   url: string;
   data: {
     key: string;

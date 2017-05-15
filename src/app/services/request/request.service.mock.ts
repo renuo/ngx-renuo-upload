@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { RequestOption } from './request-options.interface';
+import { RequestReponse } from './request-reponse.interface';
 import { RequestService } from './request.service';
 
 @Injectable()
@@ -18,7 +20,7 @@ export class RequestServiceMock {
     this.mockResponse();
   }
 
-  public makeRequest(options: RequestOption): Observable<RequestReponse> {
+  makeRequest(options: RequestOption): Observable<RequestReponse> {
     this.lastMethod = options.method;
     this.lastData = options.formData;
     this.lastPath = options.url;

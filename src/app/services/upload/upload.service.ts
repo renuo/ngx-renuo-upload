@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { RequestService } from '../request/request.service';
+import { SigningResponse } from '../signing/signing-response.interface';
 
 @Injectable()
 export class UploadSerice {
   constructor(private requestService: RequestService) {}
 
-  public uploadToAmazon(responseJSON: SigningResponse, file: File) {
+  uploadToAmazon(responseJSON: SigningResponse, file: File) {
     const formData = new FormData();
 
     this.buildForm(formData, responseJSON);
