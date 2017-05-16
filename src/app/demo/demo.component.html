@@ -1,4 +1,17 @@
 <div class="container">
   <h1>{{i18n.t.home.hello}}</h1>
-  <h1>Page under construction</h1>
+  <h1>Page under construction</h1>r
 </div>
+
+
+<h2>Simple Use</h2>
+<ru-image [src]="picture"
+        dimensions="400x400"></ru-image>
+
+<h2>Advanced Use</h2>
+<ru-image [src]="picture"
+        dimensions="400x400"
+        quality="10"
+        roundedCorners="100" background="10,10,255"
+        watermark="https://www.renuo.ch/images/logo.png">
+</ru-image>
