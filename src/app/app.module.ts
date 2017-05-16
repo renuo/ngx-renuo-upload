@@ -6,7 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
 import { CustomSingleUploadComponent } from './demo/single-custom-upload/custom-single-upload.component';
+import { ImageComponent } from './image/image.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ImageService } from './services/image/image.service';
 import { RequestService } from './services/request/request.service';
 import { SigningService } from './services/signing/signing.service';
 import { SingleUploadService } from './services/single-upload/single-upload.service';
@@ -21,6 +23,7 @@ const APP_PROVIDERS: any = [
   SigningService,
   RequestService,
   SingleUploadService
+  ImageService
 ];
 
 // tslint:disable-next-line:max-classes-per-file
@@ -36,6 +39,8 @@ const APP_PROVIDERS: any = [
     SingleUploadComponent,
     PageNotFoundComponent,
     CustomSingleUploadComponent
+    PageNotFoundComponent,
+    ImageComponent
   ],
   providers: [
     APP_PROVIDERS

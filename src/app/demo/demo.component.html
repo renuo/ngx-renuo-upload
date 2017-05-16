@@ -1,7 +1,21 @@
 <div class="container">
   <h1>Documentation ru-single-upload</h1>
+
   <h2>Simple Use</h2>
   <ru-single-upload></ru-single-upload>
   <h2>Advanced Use</h2>
   <ru-custom-single-upload></ru-custom-single-upload>
+
+  <h1>Documentation ru-image</h1>
+  <h2>Simple Use</h2>
+  <ru-image [src]="picture"
+            dimensions="400x400"></ru-image>
+
+  <h2>Advanced Use</h2>
+  <ru-image [src]="picture"
+            dimensions="400x400"
+            quality="10"
+            roundedCorners="100" background="10,10,255"
+            watermark="https://www.renuo.ch/images/logo.png">
+  </ru-image>
 </div>
