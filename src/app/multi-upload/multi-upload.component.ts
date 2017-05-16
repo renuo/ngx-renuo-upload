@@ -11,35 +11,27 @@ export class MultiUploadComponent {
   @Output() onFileAdd = new EventEmitter<File[]>();
   @Output() onFileChange = new EventEmitter<File[]>();
   files?: File[];
-  private megabyte: 1000000;
 
   click(event: Event) {
     this.addFileFromInputElement(<HTMLInputElement> event.srcElement);
   }
 
   drop(event: Event) {
-    this.preventDefault(event);
-    this.addFileFromDragEvent(<DragEvent> event);
-  }
-
-  preventDefault(event: Event) {
     event.preventDefault();
-    event.stopPropagation();
+    this.addFileFromDragEvent(<DragEvent> event);
   }
 
   private addFileFromInputElement(uploadInput: HTMLInputElement) {
     const files = uploadInput.files;
-    if (!files) { return; }
-    if (files.length === 0) { return; }
-    this.addFiles(Array.prototype.slice.call(files));
+    if (!files || files.length === 0) { return; }
+    this.addFiles(this.convertToArray(files));
   }
 
   private addFileFromDragEvent(dragEvent: DragEvent) {
-    this.addFiles(Array.prototype.slice.call(dragEvent.dataTransfer.files));
+    this.addFiles(this.convertToArray(dragEvent.dataTransfer.files));
   }
 
   private addFiles(files: File[]) {
-    files = files.filter(file => file.size / this.megabyte < this.maxFileSize);
     if (this.files) {
       this.files = this.files.concat(files);
     } else {
@@ -57,7 +49,7 @@ export class MultiUploadComponent {
     this.onFileChange.emit(this.files);
   }
 
-  private emitFileUploaded() {
-    this.onFileUpload.emit(this.files);
+  private convertToArray(files: FileList): File[] {
+    return Array.prototype.slice.call(files);
   }
 }

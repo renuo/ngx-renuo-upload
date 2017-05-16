@@ -1,11 +1,11 @@
 <div>
   <input id="multi-file-upload" type="file" [accept]="acceptedFiles" (change)="click($event)" multiple>
   <label for="multi-file-upload" class="dragzone"
-         (drag)="preventDefault($event)"
-         (dragover)="preventDefault($event)"
-         (dragenter)="preventDefault($event)"
+         (drag)="$event.preventDefault()"
+         (dragover)="$event.preventDefault()"
+         (dragenter)="$event.preventDefault()"
          (drop)="drop($event)">
-    <div *ngFor="let file of files; let i = index">
+    <div *ngFor="let file of files">
       <progress></progress>
       <p>{{file.name}}</p>
     </div>
