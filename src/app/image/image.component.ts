@@ -13,20 +13,22 @@ export class ImageComponent implements OnInit {
   @Input() background: string;
   @Input() watermark: string;
   @Input() src: string;
-  displayedImage: string;
+  displayedImage: string = '';
   i18n = I18n;
 
   constructor(private imageService: ImageService) {}
 
   ngOnInit() {
     if (this.src) {
-      this.displayedImage = this.updateImage(this.src);
-    } else {
-      console.error('Image needs a src.');
+      this.displayedImage = this.buildImage(this.src);
     }
   }
 
   updateImage(url: string) {
+    this.displayedImage = this.buildImage(url);
+  }
+
+  private buildImage(url: string): string {
     const filters: ImageFilters = {
       quality: this.quality,
       roundedCorners: this.roundedCorners,
