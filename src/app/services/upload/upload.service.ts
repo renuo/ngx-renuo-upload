@@ -1,24 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { RequestReponse } from '../request/request-reponse.interface';
+import { FileBuilderService } from '../file-builder/file-builder.servise';
 import { RequestService } from '../request/request.service';
 import { SigningResponse } from '../signing/signing-response.interface';
+import { UploadResult } from './upload-result.interface';
 
 @Injectable()
 export class UploadSerice {
-  constructor(private requestService: RequestService) {}
+  constructor(private requestService: RequestService, private fileBuilderService: FileBuilderService) {}
 
-  uploadToAmazon(responseJSON: SigningResponse, file: File): Observable<RequestReponse> {
+  uploadToAmazon(responseJSON: SigningResponse, uploadResult: UploadResult): Observable<UploadResult> {
     const formData = new FormData();
 
     this.buildForm(formData, responseJSON);
-    formData.append('file', file);
+    formData.append('file', uploadResult.file);
+
+    uploadResult.filePath = this.fileBuilderService.getFilePath(uploadResult, responseJSON.file_url_path);
+    uploadResult.publicUrl = this.fileBuilderService.getPublicUrl(uploadResult, responseJSON.file_prefix);
 
     return this.requestService.makeRequest({
       method: 'POST',
       url: responseJSON.url,
       formData
-    });
+    }, uploadResult);
   }
 
   private buildForm(formData: FormData, responseJSON: SigningResponse) {

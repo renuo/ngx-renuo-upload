@@ -9,6 +9,7 @@ import { CustomSingleUploadComponent } from './demo/single-custom-upload/custom-
 import { ImageComponent } from './image/image.component';
 import { MultiUploadComponent } from './multi-upload/multi-upload.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FileBuilderService } from './services/file-builder/file-builder.servise';
 import { ImageService } from './services/image/image.service';
 import { RequestService } from './services/request/request.service';
 import { SigningService } from './services/signing/signing.service';
@@ -24,7 +25,8 @@ const APP_PROVIDERS: any = [
   SigningService,
   RequestService,
   SingleUploadService,
-  ImageService
+  ImageService,
+  FileBuilderService
 ];
 
 // tslint:disable-next-line:max-classes-per-file
