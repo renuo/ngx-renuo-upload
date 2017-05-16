@@ -22,7 +22,7 @@ const APP_PROVIDERS: any = [
   UploadSerice,
   SigningService,
   RequestService,
-  SingleUploadService
+  SingleUploadService,
   ImageService
 ];
 
