@@ -2,23 +2,23 @@ import { inject, TestBed } from '@angular/core/testing';
 import { FileBuilderService } from '../file-builder/file-builder.servise';
 import { RequestService } from '../request/request.service';
 import { RequestServiceMock } from '../request/request.service.mock';
-import { UploadSerice } from './upload.service';
+import { UploadSericeBuilder } from './upload-builder.service';
 
-describe('UploadService', () => {
-  let service: UploadSerice;
+describe('UploadSericeBuilder', () => {
+  let service: UploadSericeBuilder;
   let requestService: RequestServiceMock;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        UploadSerice,
+        UploadSericeBuilder,
         FileBuilderService,
         RequestServiceMock.getProviders()
       ]
     });
   });
 
-  beforeEach(inject([UploadSerice, RequestService], (_service: UploadSerice, _requestService: RequestServiceMock) => {
+  beforeEach(inject([UploadSericeBuilder, RequestService], (_service: UploadSericeBuilder, _requestService: RequestServiceMock) => {
     service = _service;
     requestService = _requestService;
   }));

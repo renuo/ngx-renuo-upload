@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FileBuilderService } from '../services/file-builder/file-builder.servise';
-import { SingleUploadService } from '../services/single-upload/single-upload.service';
 import { UploadResult } from '../services/upload/upload-result.interface';
+import { UploadService } from '../services/upload/upload.service';
 const IS_UPLOADED: number = 204;
 @Component({
   selector: 'ru-multi-upload',
@@ -15,7 +15,7 @@ export class MultiUploadComponent {
   @Output() onFileUpload = new EventEmitter<UploadResult>();
   resultFiles: UploadResult[] = [];
 
-  constructor(private ref: ChangeDetectorRef, private singleUploadService: SingleUploadService,
+  constructor(private ref: ChangeDetectorRef, private uploadService: UploadService,
               private fileBuilderService: FileBuilderService) {}
 
   click(event: Event) {
@@ -47,7 +47,7 @@ export class MultiUploadComponent {
 
     for (const file of Array.from(files)) {
       const resultFile = this.fileBuilderService.buildResult(file);
-      this.singleUploadService.upload(resultFile).subscribe(result => {
+      this.uploadService.upload(resultFile).subscribe(result => {
         this.ref.detectChanges();
 
         if (result.uploadStatus === IS_UPLOADED) {

@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FileBuilderService } from '../services/file-builder/file-builder.servise';
-import { SingleUploadService } from '../services/single-upload/single-upload.service';
 import { UploadResult } from '../services/upload/upload-result.interface';
+import { UploadService } from '../services/upload/upload.service';
 const IS_UPLOADED: number = 204;
 @Component({
   selector: 'ru-single-upload',
@@ -16,14 +16,14 @@ export class SingleUploadComponent {
   resultFile?: UploadResult;
   alertText: string = '';
 
-  constructor(private ref: ChangeDetectorRef, private singleUploadService: SingleUploadService,
+  constructor(private ref: ChangeDetectorRef, private uploadService: UploadService,
               private fileBuilderService: FileBuilderService) {}
 
   upload(event: Event) {
     this.prepareUploadFile(<HTMLInputElement> event.srcElement);
 
     if (this.resultFile) {
-      this.singleUploadService.upload(this.resultFile)
+      this.uploadService.upload(this.resultFile)
         .subscribe(result => {
           this.ref.detectChanges();
 
