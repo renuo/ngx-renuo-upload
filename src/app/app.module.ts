@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
 import { CustomSingleUploadComponent } from './demo/single-custom-upload/custom-single-upload.component';
 import { ImageComponent } from './image/image.component';
+import { MultiUploadComponent } from './multi-upload/multi-upload.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ImageService } from './services/image/image.service';
 import { RequestService } from './services/request/request.service';
@@ -38,6 +39,7 @@ const APP_PROVIDERS: any = [
     DemoComponent,
     SingleUploadComponent,
     PageNotFoundComponent,
+    MultiUploadComponent,
     CustomSingleUploadComponent,
     ImageComponent
   ],

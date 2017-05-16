@@ -1,0 +1,23 @@
+.dragzone {
+  display: inline-block;
+
+  width: 100%;
+  min-height: 200px;
+  padding: 10px;
+
+  border: 1px solid;
+}
+
+input {
+  display: none;
+}
+
+p {
+  width: 50%;
+}
+
+progress {
+  float: right;
+
+  width: 50%;
+}
