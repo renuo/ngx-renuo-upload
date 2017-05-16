@@ -3,8 +3,7 @@ import { I18n } from '../i18n/i18n';
 import { ImageService } from '../services/image/image.service';
 
 @Component({
-  selector: 'ru-img',
-  styleUrls: ['image.component.scss'],
+  selector: 'ru-image',
   templateUrl: 'image.component.html'
 })
 export class ImageComponent implements OnInit {
@@ -21,13 +20,13 @@ export class ImageComponent implements OnInit {
 
   ngOnInit() {
     if (this.src) {
-      this.setDisplayedImage(this.src);
+      this.displayedImage = this.updateImage(this.src);
     } else {
       console.error('Image needs a src.');
     }
   }
 
-  private setDisplayedImage(url: string) {
+  updateImage(url: string) {
     const filters: ImageFilters = {
       quality: this.quality,
       roundedCorners: this.roundedCorners,
@@ -35,6 +34,6 @@ export class ImageComponent implements OnInit {
       watermark: this.watermark
     };
 
-    this.displayedImage = this.imageService.modifyImage(url, this.dimensions, filters);
+    return this.imageService.modifyImage(url, this.dimensions, filters);
   }
 }
