@@ -4,6 +4,7 @@ source ~/.zshrc
 
 echo -e '\033[32mInstalling activesupport\033[0m'
 gem install activesupport
+gem install mdl
 
 echo -e '\033[32mSet node version\033[0m'
 nvm install
