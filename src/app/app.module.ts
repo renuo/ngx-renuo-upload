@@ -38,8 +38,7 @@ const APP_PROVIDERS: any = [
     DemoComponent,
     SingleUploadComponent,
     PageNotFoundComponent,
-    CustomSingleUploadComponent
-    PageNotFoundComponent,
+    CustomSingleUploadComponent,
     ImageComponent
   ],
   providers: [
