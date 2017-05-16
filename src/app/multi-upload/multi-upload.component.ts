@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class MultiUploadComponent {
   @Input() acceptedFiles: string = 'image/*';
-  @Input() maxFileSize: number = 100; //MB
+  @Input() maxFileSize: number; //MB
   @Output() onFileAdd = new EventEmitter<File[]>();
   @Output() onFileChange = new EventEmitter<File[]>();
   files?: File[];
