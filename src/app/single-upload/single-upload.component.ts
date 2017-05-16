@@ -11,36 +11,24 @@ export class SingleUploadComponent {
   @Input() maxFileSize: number; //MB
   @Output() onFileAdd = new EventEmitter<File>();
   @Output() onFileUpload = new EventEmitter<File>();
-  @Output() onFileRemove = new EventEmitter<boolean>();
+  @Output() onFileRemove = new EventEmitter<File>();
   @Output() onFileChange = new EventEmitter<File>();
   file?: File;
   uploadFinished: boolean = false;
   progressInPercent: number = 0;
-  alertText: string;
+  alertText: string = '';
+  private megabyte: 1000000;
 
   constructor(private ref: ChangeDetectorRef, private singleUploadService: SingleUploadService) {}
 
   upload(event: Event) {
-    this.removeFile();
-
-    const uploadInput = <HTMLInputElement> event.srcElement;
-    const files = uploadInput.files;
-
-    this.addFile(files);
+    this.prepareUploadFile(<HTMLInputElement> event.srcElement);
 
     if (this.file) {
-      if (this.file.size / 1000000 > this.maxFileSize) {
+      if (this.file.size / this.megabyte > this.maxFileSize) {
         this.addAlert(I18n.t.upload.error.fileTooLarge);
       } else {
-        this.singleUploadService.upload(this.file).subscribe(num => {
-          this.progressInPercent = num;
-          this.ref.detectChanges();
-
-          if (num > 99) {
-            this.uploadFinished = true;
-            this.emitFileUploaded();
-          }
-        });
+        this.singleUploadService.upload(this.file).subscribe(progress => this.updateProgress(progress));
       }
     }
   }
@@ -48,15 +36,33 @@ export class SingleUploadComponent {
   removeFile() {
     this.progressInPercent = 0;
     this.uploadFinished = false;
-    this.file = undefined;
     this.emitFileRemoved();
+    this.file = undefined;
     this.removeAlert();
   }
 
-  private addFile(files: FileList | null) {
+  private prepareUploadFile(uploadInput: HTMLInputElement) {
+    this.removeFile();
+
+    const files = uploadInput.files;
+
     if (!files) { return; }
     if (files.length === 0) { return; }
-    this.file = files[0];
+    this.addFile(files[0]);
+  }
+
+  private updateProgress(progress: number) {
+    this.progressInPercent = progress;
+    this.ref.detectChanges();
+
+    if (progress > 99) {
+      this.uploadFinished = true;
+      this.emitFileUploaded();
+    }
+  }
+
+  private addFile(file: File) {
+    this.file = file;
     this.emitFileAdded();
   }
 
@@ -75,7 +81,7 @@ export class SingleUploadComponent {
 
   private emitFileRemoved() {
     this.emitFileChanged();
-    this.onFileRemove.emit(true);
+    this.onFileRemove.emit(this.file);
   }
 
   private emitFileChanged() {
