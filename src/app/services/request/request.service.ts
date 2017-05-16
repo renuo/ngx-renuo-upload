@@ -7,8 +7,10 @@ import { RequestReponse } from './request-reponse.interface';
 @Injectable()
 export class RequestService {
   makeRequest(options: RequestOption): Observable<RequestReponse> {
+    let lastUpdate = Date.now();
+
     return Observable.create((observer: Observer<RequestReponse>) => {
-      const xhr = new XMLHttpRequest();
+      const xhr = this.createXhr();
 
       xhr.open(options.method, options.url);
 
@@ -19,18 +21,21 @@ export class RequestService {
       };
 
       xhr.upload.onprogress = evt => {
-        observer.next({
-          status: xhr.status,
-          progress_in_percent: (evt.loaded / evt.total) * 100
-        });
+        if (Date.now() - lastUpdate > 100) {
+          lastUpdate = Date.now();
+          observer.next({
+            status: xhr.status,
+            progressInPercent: (evt.loaded / evt.total) * 100
+          });
+        }
       };
 
       xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4 && xhr.status === 200) {
+        if (xhr.readyState === 4 && xhr.status === 204) {
           observer.next({
             response: xhr.response,
             status: xhr.status,
-            progress_in_percent: 100
+            progressInPercent: 100
           });
           observer.complete();
         }
@@ -38,8 +43,14 @@ export class RequestService {
 
       xhr.onerror = () => {
         observer.error(xhr.status);
+        observer.complete();
       };
+
       xhr.send(options.formData);
     });
+  }
+
+  private createXhr() {
+    return new XMLHttpRequest();
   }
 }

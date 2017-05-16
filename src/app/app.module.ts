@@ -5,18 +5,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
+import { CustomSingleUploadComponent } from './demo/single-custom-upload/custom-single-upload.component';
 import { ImageComponent } from './image/image.component';
 import { MultiUploadComponent } from './multi-upload/multi-upload.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ImageService } from './services/image/image.service';
 import { RequestService } from './services/request/request.service';
 import { SigningService } from './services/signing/signing.service';
+import { SingleUploadService } from './services/single-upload/single-upload.service';
 import { UploadSerice } from './services/upload/upload.service';
+import { SingleUploadComponent } from './single-upload/single-upload.component';
 
 const APP_PROVIDERS: any = [
   //Sets the default locale
   {provide: LOCALE_ID, useValue: 'de-CH'},
   HttpModule,
+  UploadSerice,
+  SigningService,
+  RequestService,
+  SingleUploadService,
   ImageService
 ];
 
@@ -30,15 +37,14 @@ const APP_PROVIDERS: any = [
   declarations: [
     AppComponent,
     DemoComponent,
+    SingleUploadComponent,
     PageNotFoundComponent,
     MultiUploadComponent,
+    CustomSingleUploadComponent,
     ImageComponent
   ],
   providers: [
-    APP_PROVIDERS,
-    UploadSerice,
-    SigningService,
-    RequestService
+    APP_PROVIDERS
   ],
   bootstrap: [AppComponent]
 })

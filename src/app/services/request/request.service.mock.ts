@@ -31,7 +31,7 @@ export class RequestServiceMock {
     this.response = {
       status: 200,
       response: 'mock',
-      progress_in_percent: 100
+      progressInPercent: 50
     };
   }
 }

@@ -21,6 +21,7 @@ before_install:
 script:
 - bin/check
 - bin/check-server-start
+- yarn build
 cache:
   directories:
   - node_modules

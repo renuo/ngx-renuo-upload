@@ -5,5 +5,11 @@
   "pageNotFound": {
     "description": "Die gewünschte Seite konnte nicht aufgerufen werden.",
     "title": "404: Seite nicht gefunden"
+  },
+  "upload": {
+    "buttonText": "Upload a file",
+    "error": {
+      "fileTooLarge": "File is too large"
+    }
   }
 }
