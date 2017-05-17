@@ -3,5 +3,5 @@
 </div>
 <div *ngIf="resultFile">
   <progress max="100" [value]="resultFile.uploadProgressInPercent"></progress>
-  <button (click)="removeFile()">Cancel</button>
+  <button (click)="removeFile()">&times;</button>
 </div>

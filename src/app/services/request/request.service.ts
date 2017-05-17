@@ -22,9 +22,14 @@ export class RequestService {
       };
 
       xhr.upload.onprogress = evt => {
-        if (Date.now() - lastUpdate > 100) {
+        if (this.shouldUpdate(lastUpdate)) {
           lastUpdate = Date.now();
-          result.uploadStatus = xhr.status;
+
+          if (result.uploadStatus === 'canceled') {
+            xhr.abort();
+          } else {
+            result.uploadStatus = xhr.status;
+          }
           result.uploadProgressInPercent = (evt.loaded / evt.total) * 100;
           observer.next(result);
         }
@@ -51,5 +56,9 @@ export class RequestService {
 
   private createXhr() {
     return new XMLHttpRequest();
+  }
+
+  private shouldUpdate(lastUpdate: number) {
+    return Date.now() - lastUpdate > 200;
   }
 }

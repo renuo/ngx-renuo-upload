@@ -1,4 +1,5 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ErrorMessage } from '../services/error-message.interface';
 import { FileBuilderService } from '../services/file-builder/file-builder.servise';
 import { UploadResult } from '../services/upload/upload-result.interface';
 import { UploadService } from '../services/upload/upload.service';
@@ -8,13 +9,13 @@ const IS_UPLOADED: number = 204;
   templateUrl: 'single-upload.component.html'
 })
 export class SingleUploadComponent {
-  @Input() acceptedFiles: string = 'image/*';
+  @Input() acceptedFiles: string;
   @Output() onFileAdd = new EventEmitter<UploadResult>();
   @Output() onFileUpload = new EventEmitter<UploadResult>();
   @Output() onFileRemove = new EventEmitter<UploadResult>();
   @Output() onFileChange = new EventEmitter<UploadResult>();
+  @Output() onError = new EventEmitter<ErrorMessage>();
   resultFile?: UploadResult;
-  alertText: string = '';
 
   constructor(private ref: ChangeDetectorRef, private uploadService: UploadService,
               private fileBuilderService: FileBuilderService) {}
@@ -35,9 +36,11 @@ export class SingleUploadComponent {
   }
 
   removeFile() {
-    this.emitFileRemoved();
+    if (this.resultFile) {
+      this.resultFile.uploadStatus = 'canceled';
+      this.emitFileRemoved();
+    }
     this.resultFile = undefined;
-    this.removeAlert();
   }
 
   private prepareUploadFile(uploadInput: HTMLInputElement) {
@@ -46,12 +49,22 @@ export class SingleUploadComponent {
     const files = uploadInput.files;
 
     if (!files || files.length === 0) { return; }
-    this.resultFile = this.fileBuilderService.buildResult(files[0]);
+    const file = files[0];
+    if (this.dontMatchExtension(file)) { return; }
+    this.resultFile = this.fileBuilderService.buildResult(file);
     this.emitFileAdded();
   }
 
-  private removeAlert() {
-    this.alertText = '';
+  private dontMatchExtension(file: File): boolean {
+    if (this.acceptedFiles) {
+      const acceptedFilesArray = this.acceptedFiles.replace(/ /g, '').split(',');
+      const fileMatchExtension = acceptedFilesArray.includes(file.type);
+      if (!fileMatchExtension) {
+        this.emitError({dontMatchExtension: file});
+      }
+      return !fileMatchExtension;
+    }
+    return false;
   }
 
   private emitFileAdded() {
@@ -70,5 +83,9 @@ export class SingleUploadComponent {
 
   private emitFileUploaded() {
     this.onFileUpload.emit(this.resultFile);
+  }
+
+  private emitError(error: ErrorMessage) {
+    this.onError.emit(error);
   }
 }

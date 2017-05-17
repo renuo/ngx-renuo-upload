@@ -21,7 +21,7 @@ export class FileBuilderService {
       cleanName: cleanFilename,
       name: this.getShortName(cleanFilename),
       extension: this.getExtension(file.name),
-      sizeInMb: file.size / 1000000,
+      sizeInMb: this.getSizeInMb(file.size),
       uploadProgressInPercent: 0,
       uploadStatus: 0
     };
@@ -34,6 +34,10 @@ export class FileBuilderService {
   private getExtension(originalName: string): string {
     const extension = originalName.split('.').pop();
     return extension ? extension : '';
+  }
+
+  private getSizeInMb(sizeInB: number) {
+    return sizeInB / 1000000;
   }
 
   private getShortName(cleanName: string): string {
