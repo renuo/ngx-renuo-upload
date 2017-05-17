@@ -15,17 +15,17 @@ export class DemoComponent {
   picture: string = '//renuo-upload-cdn-master.renuoapp.ch/o/' +
     'renuo-upload-demo-master/u1yv/1d29/f2df/e863/6da6/d70e/788a/ea87/f7b8/o-renuo.png';
 
-  updateImg(file: UploadResult) {
+  updatePicture(file: UploadResult) {
     if (!file.filePath) {return; }
     this.picture = file.filePath;
   }
 
-  updateImgs(file: UploadResult) {
+  updatePictures(file: UploadResult) {
     if (!file.filePath) {return; }
     this.pictures.push(file.filePath);
   }
 
-  deleteImg() {
+  deletePicture() {
     this.setDefaultPicture();
   }
 

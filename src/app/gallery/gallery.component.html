@@ -1,5 +1,5 @@
-<div class="gallery" *ngIf="images.length !== 0">
-  <div class="gallery-preview" *ngIf="showPreview">
+<div *ngIf="images.length !== 0" class="gallery">
+  <div *ngIf="showPreview" class="gallery-preview">
     <img *ngIf="displayImage" class="gallery-preview-image" [src]="displayImage">
   </div>
   <div class="gallery-box">
