@@ -15,7 +15,7 @@ export class ImageComponent {
 
   constructor(private imageService: ImageService) {}
 
-  buildImage(url: string): string {
+  modifyImage(url: string): string {
     return this.imageService.modifyImage(url, this.dimensions, this.getFilters());
   }
 

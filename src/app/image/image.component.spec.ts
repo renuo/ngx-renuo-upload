@@ -9,7 +9,7 @@ describe('ImageComponent', () => {
   });
 
   it('builds the image', () => {
-    const modifiedImage = component.buildImage('//test-host/o/test-image.jpg');
+    const modifiedImage = component.modifyImage('//test-host/o/test-image.jpg');
     expect(modifiedImage).toEqual('//test-host/o/test-image.jpg');
   });
 
@@ -21,7 +21,7 @@ describe('ImageComponent', () => {
       watermark: 'https://example.com/test-image.jpg'
     });
 
-    const modifiedImage = component.buildImage('//test-host/o/test-image.jpg');
+    const modifiedImage = component.modifyImage('//test-host/o/test-image.jpg');
     expect(modifiedImage).toEqual('https://test-host/t/filters:quality(10):' +
       'watermark(https://example.com/test-image.jpg,-10,-10,50):' +
       'round_corner(25,20,255,255)/u/o/test-image.jpg');
