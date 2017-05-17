@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Documentation ru-multi-upload</h1>
   <h2>Simple Use</h2>
-  <ru-multi-upload></ru-multi-upload>
+  <ru-multi-upload (onFileUpload)="updateImgs($event)"></ru-multi-upload>
 
   <h1>Documentation ru-single-upload</h1>
   <h2>Simple Use</h2>
@@ -16,14 +16,17 @@
 
   <h1>Documentation ru-image</h1>
   <h2>Simple Use</h2>
-  <ru-image [src]="picture"
-            dimensions="400x400"></ru-image>
+  <ru-custom-image [src]="picture"></ru-custom-image>
 
   <h2>Advanced Use</h2>
-  <ru-image [src]="picture"
+  <ru-custom-image [src]="picture"
             dimensions="400x400"
             quality="10"
             roundedCorners="100" background="10,10,255"
             watermark="https://www.renuo.ch/images/logo.png">
-  </ru-image>
+  </ru-custom-image>
+
+</div>
+<div class="gallery">
+  <ru-gallery [images]="pictures" spacing="1"></ru-gallery>
 </div>

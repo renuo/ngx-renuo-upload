@@ -1,0 +1,25 @@
+.gallery {
+  margin: auto;
+  padding: 5px;
+}
+
+.gallery-box {
+  overflow: scroll;
+}
+
+.thumbnails {
+  margin: auto;
+}
+
+.gallery-preview {
+  height: 500px;
+  margin: auto;
+
+  &-image {
+    display: block;
+
+    max-width: 100%;
+    max-height: 500px;
+    margin: auto;
+  }
+}
