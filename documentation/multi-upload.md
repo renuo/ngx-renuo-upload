@@ -1,6 +1,6 @@
 # Multi Upload Component
 
-![simple-upload](https://cloud.githubusercontent.com/assets/20790833/26151729/54d950c2-3b04-11e7-83b0-cee18cb44a32.gif)
+![multi-upload](https://cloud.githubusercontent.com/assets/20790833/26152934/7f5a86ae-3b09-11e7-8c1e-7a136d062fa2.gif)
 
 ## Simple Usage
 
