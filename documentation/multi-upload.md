@@ -13,11 +13,11 @@
 ```angular2html
   <ru-multi-upload acceptedFiles="image/jpeg, image/png, application/zip"
                    maxFilesAllowed="4"
-                   (onError)=""
-                   (onFileRemove)=""
-                   (onFilesAdd)=""
-                   (onFilesChange)=""
-                   (onFileUpload)="">
+                   (onError)="doSomething()"
+                   (onFileRemove)="doSomething()"
+                   (onFilesAdd)="doSomething()"
+                   (onFilesChange)="doSomething()"
+                   (onFileUpload)="doSomething()">
   </ru-multi-upload>
 ```
 
