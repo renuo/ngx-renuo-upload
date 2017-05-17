@@ -15,6 +15,18 @@ This is a component for the renuo upload (<https://github.com/renuo/renuo-upload
 
 ## How to use
 
+### Upload Components
+
+#### Single Upload Component
+
+![simple-upload](https://cloud.githubusercontent.com/assets/20790833/26151729/54d950c2-3b04-11e7-83b0-cee18cb44a32.gif)
+
+![custom-usage](https://cloud.githubusercontent.com/assets/20790833/26152196/3770b94c-3b06-11e7-8be2-0f4a3db71ce4.gif)
+
+#### Multi Upload Component
+
+![multi-upload](https://cloud.githubusercontent.com/assets/20790833/26152934/7f5a86ae-3b09-11e7-8c1e-7a136d062fa2.gif)
+
 ### Single Image
 
 #### Simple usage
