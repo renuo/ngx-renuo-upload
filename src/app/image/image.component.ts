@@ -1,41 +1,30 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { I18n } from '../i18n/i18n';
+import { Component, Input } from '@angular/core';
 import { ImageService } from '../services/image/image.service';
 
 @Component({
   selector: 'ru-image',
   templateUrl: 'image.component.html'
 })
-export class ImageComponent implements OnInit {
+export class ImageComponent {
   @Input() dimensions: string;
   @Input() quality: number;
   @Input() roundedCorners: number;
   @Input() background: string;
   @Input() watermark: string;
   @Input() src: string;
-  displayedImage: string = '';
-  i18n = I18n;
 
   constructor(private imageService: ImageService) {}
 
-  ngOnInit() {
-    if (this.src) {
-      this.displayedImage = this.buildImage(this.src);
-    }
+  buildImage(url: string): string {
+    return this.imageService.modifyImage(url, this.dimensions, this.getFilters());
   }
 
-  updateImage(url: string) {
-    this.displayedImage = this.buildImage(url);
-  }
-
-  private buildImage(url: string): string {
-    const filters: ImageFilters = {
+  getFilters(): ImageFilters {
+    return {
       quality: this.quality,
       roundedCorners: this.roundedCorners,
       background: this.background,
       watermark: this.watermark
     };
-
-    return this.imageService.modifyImage(url, this.dimensions, filters);
   }
 }

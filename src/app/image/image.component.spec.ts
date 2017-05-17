@@ -6,15 +6,24 @@ describe('ImageComponent', () => {
 
   beforeEach(() => {
     component = new ImageComponent(new ImageService());
-    component.ngOnInit();
   });
 
-  it('image is empty when no image is given', () => {
-    expect(component.displayedImage).toEqual('');
+  it('builds the image', () => {
+    const modifiedImage = component.buildImage('//test-host/o/test-image.jpg');
+    expect(modifiedImage).toEqual('//test-host/o/test-image.jpg');
   });
 
-  it('adds the image', () => {
-    component.updateImage('//test-host/o/test-image.jpg');
-    expect(component.displayedImage).toEqual('//test-host/o/test-image.jpg');
+  it('builds the image with filters', () => {
+    spyOn(component, 'getFilters').and.returnValue({
+      quality: 10,
+      roundedCorners: 25,
+      background: '20,255,255',
+      watermark: 'https://example.com/test-image.jpg'
+    });
+
+    const modifiedImage = component.buildImage('//test-host/o/test-image.jpg');
+    expect(modifiedImage).toEqual('https://test-host/t/filters:quality(10):' +
+      'watermark(https://example.com/test-image.jpg,-10,-10,50):' +
+      'round_corner(25,20,255,255)/u/o/test-image.jpg');
   });
 });
