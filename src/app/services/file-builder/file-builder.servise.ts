@@ -37,7 +37,7 @@ export class FileBuilderService {
   }
 
   private getSizeInMb(sizeInB: number) {
-    return sizeInB / 1000000;
+    return sizeInB / 1000024;
   }
 
   private getShortName(cleanName: string): string {
