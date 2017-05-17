@@ -36,7 +36,7 @@ This is a component for the renuo upload (<https://github.com/renuo/renuo-upload
 
 #### valid inputs
 
-* `src`: source of the image uploaded with the renuo upload **required**
+* `src`: source of the image uploaded with the renuo upload
 * `dimension`: crop (and center) the image to fit the dimensions
 * `quality`: change the quality of the image (1-100)
 * `roundedCorners`: add rounded corners to the image
