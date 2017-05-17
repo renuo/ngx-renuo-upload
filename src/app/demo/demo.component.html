@@ -1,11 +1,13 @@
 <div class="container">
   <h1>Documentation ru-multi-upload</h1>
   <h2>Simple Use</h2>
-  <ru-multi-upload></ru-multi-upload>
+  <ru-multi-upload acceptedFiles="image/jpeg, image/png, application/zip"
+                   maxFilesAllowed="4">
+  </ru-multi-upload>
 
   <h1>Documentation ru-single-upload</h1>
   <h2>Simple Use</h2>
-  <ru-single-upload acceptedFiles="image/jpeg"
+  <ru-single-upload acceptedFiles="image/jpeg, image/png"
                     (onFileUpload)="updateImg($event)"
                     (onFileRemove)="deleteImg()">
   </ru-single-upload>

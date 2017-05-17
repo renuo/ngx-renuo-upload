@@ -54,7 +54,7 @@ export class MultiUploadComponent {
   private addFiles(files: FileList) {
 
     for (const file of Array.from(files)) {
-      if (this.maxFilesReached(file)) {break; }
+      if (this.maxFilesReached(file)) {return; }
       if (this.dontMatchExtension(file)) {continue; }
 
       const resultFile = this.fileBuilderService.buildResult(file);
@@ -76,7 +76,7 @@ export class MultiUploadComponent {
 
   private maxFilesReached(file: File): boolean {
     if (this.maxFilesAllowed) {
-      const maxFileReached = this.resultFiles.length > this.maxFilesAllowed;
+      const maxFileReached = this.resultFiles.length >= this.maxFilesAllowed;
       if (maxFileReached) {
         this.emitError({maxFilesReached: file});
       }
