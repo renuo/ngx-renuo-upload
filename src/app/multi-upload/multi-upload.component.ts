@@ -3,7 +3,6 @@ import { ErrorMessage } from '../services/error-message.interface';
 import { FileBuilderService } from '../services/file-builder/file-builder.servise';
 import { UploadResult } from '../services/upload/upload-result.interface';
 import { UploadService } from '../services/upload/upload.service';
-const IS_UPLOADED: number = 204;
 @Component({
   selector: 'ru-multi-upload',
   styleUrls: ['multi-upload.component.scss'],
@@ -33,19 +32,12 @@ export class MultiUploadComponent {
     this.addFileFromDragEvent(<DragEvent> event);
   }
 
-  removeFileBy(id: string, event: Event) {
+  removeFile(removedFile: UploadResult, event: Event) {
     event.preventDefault();
+    this.resultFiles = this.resultFiles.filter(file => file !== removedFile);
 
-    this.resultFiles = this.resultFiles.filter(file => {
-      const isFileToRemove = file.id === id;
-
-      file.uploadStatus = 'canceled';
-      if (isFileToRemove) {
-        this.emitFileRemoved(file);
-      }
-      return !isFileToRemove;
-    });
-
+    removedFile.uploadStatusText = 'canceled';
+    this.emitFileRemoved(removedFile);
     this.ref.detectChanges();
   }
 
@@ -62,23 +54,24 @@ export class MultiUploadComponent {
   private addFiles(files: FileList) {
 
     for (const file of Array.from(files)) {
-
       if (this.maxFilesReached(file)) {break; }
       if (this.dontMatchExtension(file)) {continue; }
 
       const resultFile = this.fileBuilderService.buildResult(file);
-
-      this.uploadService.upload(resultFile).subscribe(result => {
-        this.ref.detectChanges();
-
-        if (result.uploadStatus === IS_UPLOADED) {
-          this.emitFileUploaded(result);
-        }
-      });
-
+      this.uploadFile(resultFile);
       this.resultFiles.push(resultFile);
     }
     this.emitFilesAdded();
+  }
+
+  private uploadFile(resultFile: UploadResult) {
+    this.uploadService.upload(resultFile).subscribe(result => {
+      this.ref.detectChanges();
+
+      if (result.uploadStatusText === 'done') {
+        this.emitFileUploaded(result);
+      }
+    });
   }
 
   private maxFilesReached(file: File): boolean {

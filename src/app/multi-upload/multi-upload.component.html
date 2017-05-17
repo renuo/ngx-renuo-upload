@@ -6,7 +6,7 @@
          (dragenter)="$event.preventDefault()"
          (drop)="drop($event)">
     <div *ngFor="let file of resultFiles">
-      <button (click)="removeFileBy(file.id, $event)">&times;</button>
+      <button (click)="removeFile(file, $event)">&times;</button>
       <progress [value]="file.uploadProgressInPercent" max="100"></progress>
       <p>{{file.name}}</p>
     </div>

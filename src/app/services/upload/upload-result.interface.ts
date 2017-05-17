@@ -9,5 +9,6 @@ export interface UploadResult {
   publicUrl?: string;
   filePath?: string;
   uploadProgressInPercent: number;
-  uploadStatus: number | 'canceled';
+  uploadStatus: number;
+  uploadStatusText: 'unsent' | 'opened' | 'loading' | 'canceled' | 'done';
 }

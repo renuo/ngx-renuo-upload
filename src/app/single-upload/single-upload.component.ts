@@ -3,7 +3,6 @@ import { ErrorMessage } from '../services/error-message.interface';
 import { FileBuilderService } from '../services/file-builder/file-builder.servise';
 import { UploadResult } from '../services/upload/upload-result.interface';
 import { UploadService } from '../services/upload/upload.service';
-const IS_UPLOADED: number = 204;
 @Component({
   selector: 'ru-single-upload',
   templateUrl: 'single-upload.component.html'
@@ -28,7 +27,7 @@ export class SingleUploadComponent {
         .subscribe(result => {
           this.ref.detectChanges();
 
-          if (result.uploadStatus === IS_UPLOADED) {
+          if (result.uploadStatusText === 'done') {
             this.emitFileUploaded();
           }
         });
@@ -37,7 +36,7 @@ export class SingleUploadComponent {
 
   removeFile() {
     if (this.resultFile) {
-      this.resultFile.uploadStatus = 'canceled';
+      this.resultFile.uploadStatusText = 'canceled';
       this.emitFileRemoved();
     }
     this.resultFile = undefined;

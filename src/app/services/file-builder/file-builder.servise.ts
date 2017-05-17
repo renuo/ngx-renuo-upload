@@ -5,11 +5,11 @@ import { UploadResult } from '../upload/upload-result.interface';
 export class FileBuilderService {
 
   getPublicUrl(file: UploadResult, fileUrlPath: string): string {
-    return fileUrlPath + file.cleanName;
+    return fileUrlPath + file.orginalName;
   }
 
   getFilePath(file: UploadResult, filePrefix: string): string {
-    return filePrefix + file.cleanName;
+    return filePrefix + file.orginalName;
   }
 
   buildResult(file: File): UploadResult {
@@ -23,7 +23,8 @@ export class FileBuilderService {
       extension: this.getExtension(file.name),
       sizeInMb: this.getSizeInMb(file.size),
       uploadProgressInPercent: 0,
-      uploadStatus: 0
+      uploadStatus: 0,
+      uploadStatusText: 'unsent'
     };
   }
 

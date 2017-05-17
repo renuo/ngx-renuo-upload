@@ -13,10 +13,12 @@ export class RequestService {
       const xhr = this.createXhr();
 
       xhr.open(options.method, options.url);
+      result.uploadStatusText = 'opened';
 
       xhr.onload = () => {
         if (xhr.status <= 200 || xhr.status >= 300) {
           result.uploadStatus = xhr.status;
+          result.uploadStatusText = 'unsent';
           observer.error(result);
         }
       };
@@ -25,10 +27,11 @@ export class RequestService {
         if (this.shouldUpdate(lastUpdate)) {
           lastUpdate = Date.now();
 
-          if (result.uploadStatus === 'canceled') {
+          if (result.uploadStatusText === 'canceled') {
             xhr.abort();
           } else {
             result.uploadStatus = xhr.status;
+            result.uploadStatusText = 'loading';
           }
           result.uploadProgressInPercent = (evt.loaded / evt.total) * 100;
           observer.next(result);
@@ -38,6 +41,7 @@ export class RequestService {
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 204) {
           result.uploadStatus = xhr.status;
+          result.uploadStatusText = 'done';
           result.uploadProgressInPercent = 100;
           observer.next(result);
           observer.complete();
@@ -46,6 +50,7 @@ export class RequestService {
 
       xhr.onerror = () => {
         result.uploadStatus = xhr.status;
+        result.uploadStatusText = 'unsent';
         observer.error(result);
         observer.complete();
       };

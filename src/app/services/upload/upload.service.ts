@@ -9,7 +9,6 @@ export class UploadService {
 
   public upload(uploadResult: UploadResult): Observable<UploadResult> {
     return this.signingService.getUploadInfoAndSignature()
-      .concatMap(signingResponse => this.uploadBuilderService.uploadToAmazon(signingResponse, uploadResult))
-      .map(result => result);
+      .concatMap(signingResponse => this.uploadBuilderService.uploadToAmazon(signingResponse, uploadResult));
   }
 }
