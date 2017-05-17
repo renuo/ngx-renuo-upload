@@ -12,12 +12,18 @@ input {
   display: none;
 }
 
-p {
-  width: 50%;
+span {
+  width: 70%;
 }
 
 progress {
   float: right;
 
-  width: 50%;
+  width: 20%;
+}
+
+button {
+  float: right;
+
+  width: 10%;
 }
