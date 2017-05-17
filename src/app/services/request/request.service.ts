@@ -1,48 +1,57 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer } from 'rxjs/Observer';
+import { UploadResult } from '../upload/upload-result.interface';
 import { RequestOption } from './request-options.interface';
-import { RequestReponse } from './request-reponse.interface';
 
 @Injectable()
 export class RequestService {
-  makeRequest(options: RequestOption): Observable<RequestReponse> {
+  makeRequest(options: RequestOption, result: UploadResult): Observable<UploadResult> {
     let lastUpdate = Date.now();
 
-    return Observable.create((observer: Observer<RequestReponse>) => {
+    return Observable.create((observer: Observer<UploadResult>) => {
       const xhr = this.createXhr();
 
       xhr.open(options.method, options.url);
+      result.uploadStatusText = 'opened';
 
       xhr.onload = () => {
         if (xhr.status <= 200 || xhr.status >= 300) {
-          observer.error(xhr.status);
+          result.uploadStatus = xhr.status;
+          result.uploadStatusText = 'unsent';
+          observer.error(result);
         }
       };
 
       xhr.upload.onprogress = evt => {
-        if (Date.now() - lastUpdate > 100) {
+        if (this.shouldUpdate(lastUpdate)) {
           lastUpdate = Date.now();
-          observer.next({
-            status: xhr.status,
-            progressInPercent: (evt.loaded / evt.total) * 100
-          });
+
+          if (result.uploadStatusText === 'canceled') {
+            xhr.abort();
+          } else {
+            result.uploadStatus = xhr.status;
+            result.uploadStatusText = 'loading';
+          }
+          result.uploadProgressInPercent = (evt.loaded / evt.total) * 100;
+          observer.next(result);
         }
       };
 
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 204) {
-          observer.next({
-            response: xhr.response,
-            status: xhr.status,
-            progressInPercent: 100
-          });
+          result.uploadStatus = xhr.status;
+          result.uploadStatusText = 'done';
+          result.uploadProgressInPercent = 100;
+          observer.next(result);
           observer.complete();
         }
       };
 
       xhr.onerror = () => {
-        observer.error(xhr.status);
+        result.uploadStatus = xhr.status;
+        result.uploadStatusText = 'unsent';
+        observer.error(result);
         observer.complete();
       };
 
@@ -52,5 +61,9 @@ export class RequestService {
 
   private createXhr() {
     return new XMLHttpRequest();
+  }
+
+  private shouldUpdate(lastUpdate: number) {
+    return Date.now() - lastUpdate > 200;
   }
 }

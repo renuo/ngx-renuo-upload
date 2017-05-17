@@ -9,22 +9,24 @@ import { CustomSingleUploadComponent } from './demo/single-custom-upload/custom-
 import { ImageComponent } from './image/image.component';
 import { MultiUploadComponent } from './multi-upload/multi-upload.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FileBuilderService } from './services/file-builder/file-builder.servise';
 import { ImageService } from './services/image/image.service';
 import { RequestService } from './services/request/request.service';
 import { SigningService } from './services/signing/signing.service';
-import { SingleUploadService } from './services/single-upload/single-upload.service';
-import { UploadSerice } from './services/upload/upload.service';
+import { UploadBuilderService } from './services/upload/upload-builder.service';
+import { UploadService } from './services/upload/upload.service';
 import { SingleUploadComponent } from './single-upload/single-upload.component';
 
 const APP_PROVIDERS: any = [
   //Sets the default locale
   {provide: LOCALE_ID, useValue: 'de-CH'},
   HttpModule,
-  UploadSerice,
+  UploadService,
   SigningService,
   RequestService,
-  SingleUploadService,
-  ImageService
+  UploadBuilderService,
+  ImageService,
+  FileBuilderService
 ];
 
 // tslint:disable-next-line:max-classes-per-file

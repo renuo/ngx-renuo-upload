@@ -1,7 +1,6 @@
 <div class="upload-box">
   <input type="file" id="upload-simple" [accept]="acceptedFiles" (change)="upload($event)">
-  <label for="upload-simple"><span>{{file ? file.name : buttonText}}</span></label>
-  <button *ngIf="uploadFinished" (click)="removeFile()">X</button>
+  <label for="upload-simple"><span>{{resultFile ? resultFile.name : buttonText}}</span></label>
+  <button *ngIf="resultFile" (click)="removeFile()">&times;</button>
 </div>
-<progress max="100" [value]="progressInPercent" id="progress"></progress>
-<div *ngIf="alertText" class="alert">{{alertText}}</div>
+<progress *ngIf="resultFile" max="100" [value]="resultFile.uploadProgressInPercent"></progress>

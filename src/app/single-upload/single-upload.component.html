@@ -1,6 +1,7 @@
 <div>
   <input type="file" [accept]="acceptedFiles" (change)="upload($event)">
 </div>
-<div>
-  <progress max="100" [value]="progressInPercent"></progress>
+<div *ngIf="resultFile">
+  <progress max="100" [value]="resultFile.uploadProgressInPercent"></progress>
+  <button (click)="removeFile()">&times;</button>
 </div>

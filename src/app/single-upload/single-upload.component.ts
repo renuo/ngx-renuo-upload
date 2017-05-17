@@ -1,44 +1,45 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
-import { I18n } from '../i18n/i18n';
-import { SingleUploadService } from '../services/single-upload/single-upload.service';
-
+import { ErrorMessage } from '../services/error-message.interface';
+import { FileBuilderService } from '../services/file-builder/file-builder.servise';
+import { UploadResult } from '../services/upload/upload-result.interface';
+import { UploadService } from '../services/upload/upload.service';
 @Component({
   selector: 'ru-single-upload',
   templateUrl: 'single-upload.component.html'
 })
 export class SingleUploadComponent {
-  @Input() acceptedFiles: string = 'image/*';
-  @Input() maxFileSize: number; //MB
-  @Output() onFileAdd = new EventEmitter<File>();
-  @Output() onFileUpload = new EventEmitter<File>();
-  @Output() onFileRemove = new EventEmitter<File>();
-  @Output() onFileChange = new EventEmitter<File>();
-  file?: File;
-  uploadFinished: boolean = false;
-  progressInPercent: number = 0;
-  alertText: string = '';
-  private megabyte: 1000000;
+  @Input() acceptedFiles: string;
+  @Output() onFileAdd = new EventEmitter<UploadResult>();
+  @Output() onFileUpload = new EventEmitter<UploadResult>();
+  @Output() onFileRemove = new EventEmitter<UploadResult>();
+  @Output() onFileChange = new EventEmitter<UploadResult>();
+  @Output() onError = new EventEmitter<ErrorMessage>();
+  resultFile?: UploadResult;
 
-  constructor(private ref: ChangeDetectorRef, private singleUploadService: SingleUploadService) {}
+  constructor(private ref: ChangeDetectorRef, private uploadService: UploadService,
+              private fileBuilderService: FileBuilderService) {}
 
   upload(event: Event) {
     this.prepareUploadFile(<HTMLInputElement> event.srcElement);
 
-    if (this.file) {
-      if (this.file.size / this.megabyte > this.maxFileSize) {
-        this.addAlert(I18n.t.upload.error.fileTooLarge);
-      } else {
-        this.singleUploadService.upload(this.file).subscribe(progress => this.updateProgress(progress));
-      }
+    if (this.resultFile) {
+      this.uploadService.upload(this.resultFile)
+        .subscribe(result => {
+          this.ref.detectChanges();
+
+          if (result.uploadStatusText === 'done') {
+            this.emitFileUploaded();
+          }
+        });
     }
   }
 
   removeFile() {
-    this.progressInPercent = 0;
-    this.uploadFinished = false;
-    this.emitFileRemoved();
-    this.file = undefined;
-    this.removeAlert();
+    if (this.resultFile) {
+      this.resultFile.uploadStatusText = 'canceled';
+      this.emitFileRemoved();
+    }
+    this.resultFile = undefined;
   }
 
   private prepareUploadFile(uploadInput: HTMLInputElement) {
@@ -46,49 +47,44 @@ export class SingleUploadComponent {
 
     const files = uploadInput.files;
 
-    if (!files) { return; }
-    if (files.length === 0) { return; }
-    this.addFile(files[0]);
-  }
-
-  private updateProgress(progress: number) {
-    this.progressInPercent = progress;
-    this.ref.detectChanges();
-
-    if (progress > 99) {
-      this.uploadFinished = true;
-      this.emitFileUploaded();
-    }
-  }
-
-  private addFile(file: File) {
-    this.file = file;
+    if (!files || files.length === 0) { return; }
+    const file = files[0];
+    if (this.dontMatchExtension(file)) { return; }
+    this.resultFile = this.fileBuilderService.buildResult(file);
     this.emitFileAdded();
   }
 
-  private removeAlert() {
-    this.alertText = '';
-  }
-
-  private addAlert(alertText: string) {
-    this.alertText = alertText;
+  private dontMatchExtension(file: File): boolean {
+    if (this.acceptedFiles) {
+      const acceptedFilesArray = this.acceptedFiles.replace(/ /g, '').split(',');
+      const fileMatchExtension = acceptedFilesArray.includes(file.type);
+      if (!fileMatchExtension) {
+        this.emitError({dontMatchExtension: file});
+      }
+      return !fileMatchExtension;
+    }
+    return false;
   }
 
   private emitFileAdded() {
     this.emitFileChanged();
-    this.onFileAdd.emit(this.file);
+    this.onFileAdd.emit(this.resultFile);
   }
 
   private emitFileRemoved() {
     this.emitFileChanged();
-    this.onFileRemove.emit(this.file);
+    this.onFileRemove.emit(this.resultFile);
   }
 
   private emitFileChanged() {
-    this.onFileChange.emit(this.file);
+    this.onFileChange.emit(this.resultFile);
   }
 
   private emitFileUploaded() {
-    this.onFileUpload.emit(this.file);
+    this.onFileUpload.emit(this.resultFile);
+  }
+
+  private emitError(error: ErrorMessage) {
+    this.onError.emit(error);
   }
 }
