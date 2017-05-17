@@ -6,7 +6,7 @@ import { SigningResponse } from '../signing/signing-response.interface';
 import { UploadResult } from './upload-result.interface';
 
 @Injectable()
-export class UploadSericeBuilder {
+export class UploadBuilderService {
   constructor(private requestService: RequestService, private fileBuilderService: FileBuilderService) {}
 
   uploadToAmazon(responseJSON: SigningResponse, uploadResult: UploadResult): Observable<UploadResult> {
