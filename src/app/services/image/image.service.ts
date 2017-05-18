@@ -14,7 +14,7 @@ export class ImageService {
     }
   }
 
-  private thumborImage(url: string, imageOptions: string) {
+  private thumborImage(url: string, imageOptions: string): string {
     const index = url.indexOf('/o/');
     const host = url.slice(0, index);
     const filePath = url.slice(index);
