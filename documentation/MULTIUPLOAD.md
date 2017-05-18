@@ -5,7 +5,7 @@
 ## Simple Usage
 
 ```angular2html
-  <ru-multi-upload ></ru-multi-upload>
+  <ru-multi-upload></ru-multi-upload>
 ```
 
 ## Advanced Usage
