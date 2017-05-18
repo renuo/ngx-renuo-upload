@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { SigningResponse } from './signing-response.interface';
 
 @Injectable()
-export class HttpMock {
+export class SigningRequestMock {
   static getProviders() {
     return {provide: Http, useClass: this};
   }
