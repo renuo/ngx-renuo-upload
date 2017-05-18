@@ -1,10 +1,14 @@
 export interface UploadResult {
-  id: number;
+  id: string;
+  file: File;
   orginalName: string;
   cleanName: string;
   name: string;
   extension: string;
-  size_in_mb: number;
-  publicUrl: string;
-  filePath: string;
+  sizeInMb: number;
+  publicUrl?: string;
+  filePath?: string;
+  uploadProgressInPercent: number;
+  uploadStatus: number;
+  uploadStatusText: 'unsent' | 'opened' | 'loading' | 'canceled' | 'done';
 }

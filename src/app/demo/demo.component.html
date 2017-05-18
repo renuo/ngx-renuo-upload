@@ -1,17 +1,32 @@
 <div class="container">
-  <h1>{{i18n.t.home.hello}}</h1>
-  <h1>Page under construction</h1>r
+  <h1>Documentation ru-multi-upload</h1>
+  <h2>Simple Use</h2>
+  <ru-multi-upload (onFileUpload)="updatePictures($event)"></ru-multi-upload>
+
+  <h1>Documentation ru-single-upload</h1>
+  <h2>Simple Use</h2>
+  <ru-single-upload acceptedFiles="image/jpeg"
+                    (onFileUpload)="updatePicture($event)"
+                    (onFileRemove)="deletePicture()">
+  </ru-single-upload>
+
+  <h2>Advanced Use</h2>
+  <ru-custom-single-upload (onFileUpload)="updatePicture($event)"
+                           (onFileRemove)="deletePicture()"></ru-custom-single-upload>
+
+  <h1>Documentation ru-image</h1>
+  <h2>Simple Use</h2>
+  <ru-custom-image [src]="picture"></ru-custom-image>
+
+  <h2>Advanced Use</h2>
+  <ru-custom-image [src]="picture"
+            dimensions="400x400"
+            quality="10"
+            roundedCorners="100" background="10,10,255"
+            watermark="https://www.renuo.ch/images/logo.png">
+  </ru-custom-image>
+
 </div>
-
-
-<h2>Simple Use</h2>
-<ru-image [src]="picture"
-        dimensions="400x400"></ru-image>
-
-<h2>Advanced Use</h2>
-<ru-image [src]="picture"
-        dimensions="400x400"
-        quality="10"
-        roundedCorners="100" background="10,10,255"
-        watermark="https://www.renuo.ch/images/logo.png">
-</ru-image>
+<div class="gallery">
+  <ru-gallery [images]="pictures" spacing="1"></ru-gallery>
+</div>
