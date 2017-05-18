@@ -15,33 +15,19 @@ This is a component for the renuo upload (<https://github.com/renuo/renuo-upload
 
 ## How to use
 
+### Upload Components
+
+#### Single Upload Component
+
+![simple-upload](https://cloud.githubusercontent.com/assets/20790833/26151729/54d950c2-3b04-11e7-83b0-cee18cb44a32.gif)
+
+#### Multi Upload Component
+
+![multi-upload](https://cloud.githubusercontent.com/assets/20790833/26152934/7f5a86ae-3b09-11e7-8c1e-7a136d062fa2.gif)
+
 ### Single Image
 
-#### Simple usage
-
-```angular2html
-<ru-img [src]="picture"></ru-img>
-```
-
-#### Advanced usage
-
-```angular2html
-<ru-img [src]="picture"
-    dimensions="400x400"
-    quality="10"
-    roundedCorners="60" background="10,10,255"
-    watermark="https://www.renuo.ch/images/logo.png">
-</ru-img>
-```
-
-#### valid inputs
-
-* `src`: source of the image uploaded with the renuo upload
-* `dimension`: crop (and center) the image to fit the dimensions
-* `quality`: change the quality of the image (1-100)
-* `roundedCorners`: add rounded corners to the image
-* `background`: the background of image with rounded corners (default: white)
-* `watermark`: add a watermark to the image **image need link with host**
+### Gallery
 
 ## Developing
 
