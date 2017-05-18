@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { FileBuilderService } from '../file-builder/file-builder.servise';
+import { FileBuilderService } from '../file-builder/file-builder.service';
 import { RequestService } from '../request/request.service';
 import { SigningResponse } from '../signing/signing-response.interface';
 import { UploadResult } from './upload-result.interface';

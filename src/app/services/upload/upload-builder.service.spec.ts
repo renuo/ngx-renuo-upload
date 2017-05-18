@@ -1,5 +1,5 @@
 import { inject, TestBed } from '@angular/core/testing';
-import { FileBuilderService } from '../file-builder/file-builder.servise';
+import { FileBuilderService } from '../file-builder/file-builder.service';
 import { RequestService } from '../request/request.service';
 import { RequestServiceMock } from '../request/request.service.mock';
 import { UploadBuilderService } from './upload-builder.service';

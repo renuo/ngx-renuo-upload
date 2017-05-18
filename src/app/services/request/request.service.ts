@@ -59,11 +59,11 @@ export class RequestService {
     });
   }
 
-  private createXhr() {
+  private createXhr(): XMLHttpRequest {
     return new XMLHttpRequest();
   }
 
-  private shouldUpdate(lastUpdate: number) {
+  private shouldUpdate(lastUpdate: number): boolean {
     return Date.now() - lastUpdate > 200;
   }
 }
