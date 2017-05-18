@@ -1,0 +1,10 @@
+<div *ngIf="images.length !== 0" class="gallery">
+  <div *ngIf="showPreview" class="gallery-preview">
+    <img *ngIf="displayImage" class="gallery-preview-image" [src]="displayImage">
+  </div>
+  <div class="gallery-box">
+    <div class="thumbnails" [style.width]="getWidth(images.length) + 'px'">
+      <img *ngFor="let image of images" [src]="modifyThumbnail(image)" (click)="setDisplayImage(image)" [style.padding]="spacing + 'px'">
+    </div>
+  </div>
+</div>
