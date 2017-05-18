@@ -1,4 +1,4 @@
-import { FileBuilderService } from './file-builder.servise';
+import { FileBuilderService } from './file-builder.service';
 const service = new FileBuilderService();
 
 describe('FileBuilderService', () => {

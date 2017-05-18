@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ErrorMessage } from '../services/error-message.interface';
-import { FileBuilderService } from '../services/file-builder/file-builder.servise';
+import { FileBuilderService } from '../services/file-builder/file-builder.service';
 import { UploadResult } from '../services/upload/upload-result.interface';
 import { UploadService } from '../services/upload/upload.service';
 @Component({
