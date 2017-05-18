@@ -1,4 +1,6 @@
-# Simple Usage
+# Gallery
+
+## Simple Usage
 
 ```angular2html
 <ru-gallery [images]="pictures"></ru-gallery>
