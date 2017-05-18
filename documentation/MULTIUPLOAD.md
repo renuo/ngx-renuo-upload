@@ -32,3 +32,9 @@
 * `onFilesAdd`: emits the file[] when one ore more file are added **not uploaded**
 * `onFilesChange`: emits the file[] when one ore more file are added or removed
 * `onFileUpload`: emits the file as soon it is uploaded
+
+## Custom Usage
+
+[Upload with Bootstrap](../src/app/demo/custom-multi-upload)
+
+[Upload with Preview](../src/app/demo/custom-image-multi-upload)
