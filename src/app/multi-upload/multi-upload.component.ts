@@ -54,7 +54,7 @@ export class MultiUploadComponent {
   private addFiles(files: FileList) {
 
     for (const file of Array.from(files)) {
-      if (this.maxFilesReached(file)) {break; }
+      if (this.maxFilesReached(file)) {return; }
       if (this.dontMatchExtension(file)) {continue; }
 
       const resultFile = this.fileBuilderService.buildResult(file);
@@ -76,9 +76,9 @@ export class MultiUploadComponent {
 
   private maxFilesReached(file: File): boolean {
     if (this.maxFilesAllowed) {
-      const maxFileReached = this.resultFiles.length > this.maxFilesAllowed;
+      const maxFileReached = this.resultFiles.length >= this.maxFilesAllowed;
       if (maxFileReached) {
-        this.emitError({maxFilesReached: file});
+        this.emitError({messageType: 'maxFilesReached', file});
       }
       return maxFileReached;
     }
@@ -90,7 +90,7 @@ export class MultiUploadComponent {
       const acceptedFilesArray = this.acceptedFiles.replace(/ /g, '').split(',');
       const fileMatchExtension = acceptedFilesArray.includes(file.type);
       if (!fileMatchExtension) {
-        this.emitError({dontMatchExtension: file});
+        this.emitError({messageType: 'dontMatchExtension', file});
       }
       return !fileMatchExtension;
     }

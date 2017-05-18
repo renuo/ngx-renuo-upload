@@ -1,0 +1,27 @@
+<div>
+  <input class="hidden" id="custom-image-multi-file-upload" type="file" [accept]="acceptedFiles" (change)="click($event)" multiple>
+  <label for="custom-image-multi-file-upload" class="dragzone jumbotron"
+         (drag)="$event.preventDefault()"
+         (dragover)="$event.preventDefault()"
+         (dragenter)="$event.preventDefault()"
+         (drop)="drop($event)">
+    <div *ngIf="resultFiles.length === 0" class="info-text">
+      <h1>{{i18n.t.upload.dropzone.image}}</h1>
+      <p>{{i18n.t.upload.dropzone.subtitle}}</p></div>
+    <div *ngFor="let file of resultFiles" class="image-box">
+      <div class="image-thumbnail">
+        <ru-image *ngIf="file.uploadStatusText === 'done'" dimensions="100x100" [src]="file.filePath"></ru-image>
+        <div *ngIf="file.uploadStatusText !== 'done'">
+          {{file.name}}
+        </div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar active"
+             [ngClass]="file.uploadProgressInPercent === 100 ? 'progress-bar-success' : 'progress-bar-striped'"
+             role="progressbar" aria-valuemin="0" aria-valuemax="100" [style.width]="file.uploadProgressInPercent + '%'">
+        </div>
+      </div>
+      <a href="#" class="btn btn-danger btn-sm pull-right btn-top" (click)="removeFile(file, $event)" role="button">&times;</a>
+    </div>
+  </label>
+</div>

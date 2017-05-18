@@ -3,13 +3,13 @@ import { I18n } from './i18n';
 describe('I18n', () => {
   describe('t', () => {
     it('translates a simple value', () => {
-      expect(I18n.t.home.hello).toEqual('Hello World');
+      expect(I18n.t.home.demo).toEqual('Demo');
     });
   });
 
   describe('tFromString', () => {
     it('translates a valid value', () => {
-      expect(I18n.tFromString('home.hello')).toEqual('Hello World');
+      expect(I18n.tFromString('home.demo')).toEqual('Demo');
     });
   });
 

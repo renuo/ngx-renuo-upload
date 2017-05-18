@@ -1,4 +1,4 @@
 export interface ErrorMessage {
-  maxFilesReached?: File;
-  dontMatchExtension?: File;
+  messageType: 'maxFilesReached' | 'dontMatchExtension';
+  file: File;
 }

@@ -1,19 +1,27 @@
 @import 'scss/variables.style';
+@import 'scss/bootstrap/bootstrap.min';
 
-body {
-  background-color: ghostwhite;
+.gallery {
+  margin: auto;
+
+  background-color: $gallery-bg;
+}
+
+.ru-upload {
+  padding: 10px 30px 10px 10px;
 }
 
 .container {
-  max-width: 500px;
-  margin: auto;
-  padding: 50px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 
-  border: 1px solid;
-  border-radius: 20px;
-  background-color: white;
+  border-radius: 10px;
+  background-color: $container-bg;
 }
 
-.gallery {
-  background-color: black;
+.footer {
+  padding: 50px;
+
+  color: $footer-color;
+  background-color: $footer-bg;
 }

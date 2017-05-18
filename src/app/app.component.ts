@@ -3,7 +3,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'ru-app',
   styleUrls: [
-    './scss/app.scss'
+    './demo/scss/app.scss'
   ],
   encapsulation: ViewEncapsulation.None,
   templateUrl: 'app.component.html'
