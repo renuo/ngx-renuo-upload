@@ -1,15 +1,35 @@
 {
+  "footer": {
+    "aboutRenuo": {
+      "subtitle": "Renuo AG / Web Development / Software Engineering / Mobile Apps",
+      "title": "About Renuo"
+    },
+    "aboutUpload": {
+      "subtitle": "Made by Pascal Andermatt",
+      "title": "Renuo Upload"
+    }
+  },
   "home": {
-    "hello": "Hello World"
+    "addImage": "Bild hinzufügen",
+    "advancedUse": "Fortgeschrittene Anwendung",
+    "customUse": "Benutzerdefinierte Anwendung",
+    "demo": "Demo",
+    "simpleUse": "Einfache Anwendung"
   },
   "pageNotFound": {
     "description": "Die gewünschte Seite konnte nicht aufgerufen werden.",
     "title": "404: Seite nicht gefunden"
   },
   "upload": {
-    "buttonText": "Upload a file",
+    "buttonText": "Hochladen",
+    "dropzone": {
+      "image": "Bild hochladen",
+      "subtitle": "Klicken oder reinziehen",
+      "title": "Datei hochladen"
+    },
     "error": {
-      "fileTooLarge": "File is too large"
+      "dontMatchExtension": "Bitte achten Sie auf die Dateiendung. {{fileName}} konnte nicht hinzugefügt werden.",
+      "maxFilesReached": "Maximale Anzahl erreicht. '{{fileName}}' konnte nicht hinzugefügt werden."
     }
   }
 }

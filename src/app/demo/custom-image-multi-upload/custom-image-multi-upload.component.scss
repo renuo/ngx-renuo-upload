@@ -1,0 +1,39 @@
+@import '../scss/bootstrap/bootstrap.min';
+
+.dragzone {
+  display: inline-block;
+
+  width: 100%;
+  min-height: 170px;
+  padding: 10px;
+
+  border-radius: 20px;
+}
+
+.info-text {
+  text-align: center;
+}
+
+.btn-top {
+  position: relative;
+  top: -140px;
+}
+
+.image-box {
+  display: inline-block;
+
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+}
+
+.image-thumbnail {
+  font-size: 25px;
+
+  overflow: hidden;
+
+  width: 100px;
+  height: 100px;
+
+  text-align: center;
+}

@@ -4,9 +4,11 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CustomImageMultiUploadComponent } from './demo/custom-image-multi-upload/custom-image-multi-upload.component';
 import { CustomImageComponent } from './demo/custom-image/custom-image.component';
+import { CustomMultiUploadComponent } from './demo/custom-multi-upload/custom-multi-upload.component';
+import { CustomSingleUploadComponent } from './demo/custom-single-upload/custom-single-upload.component';
 import { DemoComponent } from './demo/demo.component';
-import { CustomSingleUploadComponent } from './demo/single-custom-upload/custom-single-upload.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ImageComponent } from './image/image.component';
 import { MultiUploadComponent } from './multi-upload/multi-upload.component';
@@ -47,7 +49,9 @@ const APP_PROVIDERS: any = [
     CustomSingleUploadComponent,
     ImageComponent,
     GalleryComponent,
-    CustomImageComponent
+    CustomImageComponent,
+    CustomImageMultiUploadComponent,
+    CustomMultiUploadComponent
   ],
   providers: [
     APP_PROVIDERS
