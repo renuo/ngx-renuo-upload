@@ -29,16 +29,21 @@
   <h1><code>ru-multi-upload</code></h1>
   <h2>{{i18n.t.home.simpleUse}}</h2>
   <div class="ru-upload">
-  <ru-multi-upload acceptedFiles="image/jpeg, image/png"
-                   (onFileUpload)="updatePictures($event)"
-                   (onError)="addAlert($event)"></ru-multi-upload>
+    <ru-multi-upload (onFileUpload)="updatePictures($event)"
+                     (onError)="addAlert($event)"></ru-multi-upload>
   </div>
 
   <h2>{{i18n.t.home.customUse}}</h2>
   <ru-custom-multi-upload
-    maxFilesAllowed="4"
     (onFileUpload)="updatePictures($event)"
     (onError)="addAlert($event)"></ru-custom-multi-upload>
+
+  <h2>{{i18n.t.home.customUse}}</h2>
+  <ru-custom-image-multi-upload
+    maxFilesAllowed="8"
+    acceptedFiles="image/jpeg, image/png"
+    (onFileUpload)="updatePictures($event)"
+    (onError)="addAlert($event)"></ru-custom-image-multi-upload>
   <hr>
   <h1><code>ru-image</code></h1>
   <div class="row">
@@ -58,7 +63,7 @@
   </div>
 
   <hr>
-  <h1><code>ru-galler</code>
+  <h1><code>ru-gallery</code>
     <div class="btn btn-primary" (click)="addDefaultPictureToGallery()">{{i18n.t.home.addImage}}</div>
   </h1>
   <h2>{{i18n.t.home.simpleUse}}</h2>

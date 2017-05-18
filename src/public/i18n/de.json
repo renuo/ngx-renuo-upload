@@ -23,6 +23,7 @@
   "upload": {
     "buttonText": "Hochladen",
     "dropzone": {
+      "image": "Bild hochladen",
       "subtitle": "Klicken oder reinziehen",
       "title": "Datei hochladen"
     },
