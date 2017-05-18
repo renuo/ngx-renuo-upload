@@ -37,4 +37,6 @@
 
 [Upload with Bootstrap](../src/app/demo/custom-multi-upload)
 
+![Upload with Bootstrap](https://cloud.githubusercontent.com/assets/20790833/26211187/426715c0-3bf2-11e7-8627-b68dd5c823b7.png)
+
 [Upload with Preview](../src/app/demo/custom-image-multi-upload)
