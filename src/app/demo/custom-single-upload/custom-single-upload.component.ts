@@ -1,7 +1,6 @@
 /* tslint:disable:no-access-missing-member */
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { I18n } from '../../i18n/i18n';
-import { UploadResult } from '../../services/upload/upload-result.interface';
 import { SingleUploadComponent } from '../../single-upload/single-upload.component';
 @Component({
   selector: 'ru-custom-single-upload',
