@@ -1,19 +1,8 @@
 @import 'scss/variables.style';
-
-body {
-  background-color: ghostwhite;
-}
-
-.container {
-  max-width: 500px;
-  margin: auto;
-  padding: 50px;
-
-  border: 1px solid;
-  border-radius: 20px;
-  background-color: white;
-}
+@import 'scss/bootstrap';
 
 .gallery {
+  margin: auto;
+
   background-color: black;
 }

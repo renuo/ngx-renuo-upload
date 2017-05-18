@@ -10,6 +10,4 @@ import { SingleUploadComponent } from '../../single-upload/single-upload.compone
 })
 export class CustomSingleUploadComponent extends SingleUploadComponent {
   buttonText: string = I18n.t.upload.buttonText;
-  @Output() onFileUpload = new EventEmitter<UploadResult>();
-  @Output() onFileRemove = new EventEmitter<UploadResult>();
 }

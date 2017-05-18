@@ -59,7 +59,7 @@ export class SingleUploadComponent {
       const acceptedFilesArray = this.acceptedFiles.replace(/ /g, '').split(',');
       const fileMatchExtension = acceptedFilesArray.includes(file.type);
       if (!fileMatchExtension) {
-        this.emitError({dontMatchExtension: file});
+        this.emitError({messageType: 'dontMatchExtension', file});
       }
       return !fileMatchExtension;
     }
