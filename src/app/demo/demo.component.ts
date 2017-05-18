@@ -9,15 +9,23 @@ import { UploadResult } from '../services/upload/upload-result.interface';
 })
 export class DemoComponent {
   i18n = I18n;
+
+  pictures: string[] = [];
+
   picture: string = '//renuo-upload-cdn-master.renuoapp.ch/o/' +
     'renuo-upload-demo-master/u1yv/1d29/f2df/e863/6da6/d70e/788a/ea87/f7b8/o-renuo.png';
 
-  updateImg(file: UploadResult) {
+  updatePicture(file: UploadResult) {
     if (!file.filePath) {return; }
     this.picture = file.filePath;
   }
 
-  deleteImg() {
+  updatePictures(file: UploadResult) {
+    if (!file.filePath) {return; }
+    this.pictures.push(file.filePath);
+  }
+
+  deletePicture() {
     this.setDefaultPicture();
   }
 

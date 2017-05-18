@@ -8,12 +8,12 @@ describe('ImageComponent', () => {
     component = new ImageComponent(new ImageService());
   });
 
-  it('builds the image', () => {
+  it('modifies the image', () => {
     const modifiedImage = component.modifyImage('//test-host/o/test-image.jpg');
     expect(modifiedImage).toEqual('//test-host/o/test-image.jpg');
   });
 
-  it('builds the image with filters', () => {
+  it('modifies the image with filters', () => {
     spyOn(component, 'getFilters').and.returnValue({
       quality: 10,
       roundedCorners: 25,
