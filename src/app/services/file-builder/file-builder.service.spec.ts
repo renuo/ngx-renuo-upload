@@ -34,13 +34,13 @@ describe('FileBuilderService', () => {
   });
 
   describe('getPublicUrl', () => {
-    it('returns the S3 public Url', () => {
+    it('returns the public Url', () => {
       expect(service.getPublicUrl(result, '//public/url/')).toEqual('//public/url/nice/file5?.jpg');
     });
   });
 
   describe('getFilePath', () => {
-    it('returns the S3 file path', () => {
+    it('returns the file path', () => {
       expect(service.getFilePath(result, 'path/to/file/')).toEqual('path/to/file/nice/file5?.jpg');
     });
   });
