@@ -1,4 +1,14 @@
 {
+  "footer": {
+    "aboutRenuo": {
+      "subtitle": "Renuo AG / Web Development / Software Engineering / Mobile Apps",
+      "title": "About Renuo"
+    },
+    "aboutUpload": {
+      "subtitle": "Made by Pascal Andermatt",
+      "title": "Renuo Upload"
+    }
+  },
   "home": {
     "addImage": "Bild hinzufügen",
     "advancedUse": "Fortgeschrittene Anwendung",
@@ -11,7 +21,7 @@
     "title": "404: Seite nicht gefunden"
   },
   "upload": {
-    "buttonText": "Upload a file",
+    "buttonText": "Hochladen",
     "dropzone": {
       "subtitle": "Klicken oder reinziehen",
       "title": "Datei hochladen"
