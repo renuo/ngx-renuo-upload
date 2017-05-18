@@ -4,12 +4,11 @@
 .gallery {
   margin: auto;
 
-  background-color: black;
+  background-color: $gallery-bg;
 }
 
 .ru-upload {
-  padding: 10px;
-  padding-right: 30px;
+  padding: 10px 30px 10px 10px;
 }
 
 .container {
@@ -17,12 +16,12 @@
   margin-bottom: 20px;
 
   border-radius: 10px;
-  background-color: #fff;
+  background-color: $container-bg;
 }
 
 .footer {
   padding: 50px;
 
-  color: white;
-  background-color: black;
+  color: $footer-color;
+  background-color: $footer-bg;
 }
