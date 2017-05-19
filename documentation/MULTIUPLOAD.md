@@ -24,6 +24,7 @@
 ## Valid Inputs
 
 * `acceptedFiles`: accepted files to upload
+* `maxFilesAllowed`: max files allowed to upload
 
 ## Ouputs
 

@@ -15,6 +15,8 @@
 </ru-img>
 ```
 
+![image-with-filter](https://cloud.githubusercontent.com/assets/20790833/26243895/c27e84d2-3c8d-11e7-88c2-a0834e012ab1.png)
+
 ## Valid Inputs
 
 * `src`: source of the image uploaded with the renuo upload

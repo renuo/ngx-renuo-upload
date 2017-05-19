@@ -2,6 +2,12 @@
 
 ## Simple Usage
 
+![gallery](https://cloud.githubusercontent.com/assets/20790833/26243783/5d34cdfc-3c8d-11e7-8888-4165bd674983.png)
+
+or
+
+![gallery-no-preview](https://cloud.githubusercontent.com/assets/20790833/26243806/6c35bbb8-3c8d-11e7-8d3e-b208a9d7efa0.png)
+
 ```angular2html
 <ru-gallery [images]="pictures"></ru-gallery>
 ```
