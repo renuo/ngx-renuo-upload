@@ -1,4 +1,8 @@
-# Simple Usage
+# Image
+
+![image-with-filter](https://cloud.githubusercontent.com/assets/20790833/26243895/c27e84d2-3c8d-11e7-88c2-a0834e012ab1.png)
+
+## Simple Usage
 
 ```angular2html
 <ru-img [src]="picture"></ru-img>
@@ -14,8 +18,6 @@
     watermark="https://www.renuo.ch/images/logo.png">
 </ru-img>
 ```
-
-![image-with-filter](https://cloud.githubusercontent.com/assets/20790833/26243895/c27e84d2-3c8d-11e7-88c2-a0834e012ab1.png)
 
 ## Valid Inputs
 
