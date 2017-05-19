@@ -34,4 +34,6 @@
 
 ## Custom Usage
 
+[Upload with own Button](../src/app/demo/custom-single-upload)
+
 ![custom-usage](https://cloud.githubusercontent.com/assets/20790833/26152196/3770b94c-3b06-11e7-8be2-0f4a3db71ce4.gif)
