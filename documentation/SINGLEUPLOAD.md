@@ -30,7 +30,7 @@
 * `onFileAdd`: emits the new file when a new file is added **not uploaded**
 * `onFileChange`: emits the added or removed file when the file is added or removed
 * `onFileRemove`: emits the removed file when the file is removed
-* `onFileUpload`: emits the file as soon it is uploaded
+* `onFileUpload`: emits the file as soon as it is uploaded
 
 ## Custom Usage
 
