@@ -26,4 +26,4 @@
 * `quality`: change the quality of the image (1-100)
 * `roundedCorners`: add rounded corners to the image
 * `background`: the background of image with rounded corners (default: white)
-* `watermark`: add a watermark to the image **image need link with host**
+* `watermark`: add a watermark to the image **image needs link with host**

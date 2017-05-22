@@ -103,9 +103,9 @@ bin/coverage
 ### bin-scripts
 
 * `bin/check`: runs all checks
-* `bin/check-server-start`: subscript of `bin/check` to test to run server
+* `bin/check-server-start`: subscript of `bin/check` to test if server runs
 * `bin/coverage`: show coverage report
-* `bin/fix` run auto-corrections (`tslint --fix`)
+* `bin/fix` runs auto-corrections (`tslint --fix`)
 * `bin/generate-i18n`: generate new translation keys
 * `bin/prettify-translations`: sorts the translation keys
 * `bin/setup`: sets up the project

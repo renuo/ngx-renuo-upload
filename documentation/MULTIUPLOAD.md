@@ -30,9 +30,9 @@
 
 * `onError`: emits the error when there is an error
 * `onFileRemove`: emits the removed file when a file is removed
-* `onFilesAdd`: emits the file[] when one ore more file are added **not uploaded**
-* `onFilesChange`: emits the file[] when one ore more file are added or removed
-* `onFileUpload`: emits the file as soon it is uploaded
+* `onFilesAdd`: emits the file[] if one or more files are added **not uploaded**
+* `onFilesChange`: emits the file[] if one ore more files are added or removed
+* `onFileUpload`: emits the file as soon as it is uploaded
 
 ## Custom Usage
 

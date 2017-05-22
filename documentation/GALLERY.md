@@ -27,11 +27,11 @@ or
 
 ## Valid Inputs
 
-* `background`: the background of thumbnail-image with rounded corners (default: white)
+* `background`: the background of the thumbnail-image with rounded corners (default: white)
 * `pictures`: source array `string[]` of the image uploaded with the renuo upload
 * `quality`: change the quality of the thumbnail-image (1-100)
 * `roundedCorners`: add rounded corners to the thumbnail-image
 * `showPreview`: show a preview of the selected image (like a gallery)
 * `spacing`: spacing between the thumbnail-images (default: 10)
 * `thumbnailDimensions`: crop (and center) the thumbnail of the gallery to fit the dimensions (default: 250x250)
-* `watermark`: add a watermark to the thumbnail-image **image need link with host**
+* `watermark`: add a watermark to the thumbnail-image **image needs link with host**
