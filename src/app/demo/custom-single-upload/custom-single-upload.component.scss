@@ -1,0 +1,78 @@
+@import '../scss/variables.style';
+
+.upload-box {
+  width: 215px;
+}
+
+input {
+  display: none;
+}
+
+label {
+  display: inline-block;
+
+  color: $upload-button-font;
+  background-color: $upload-button-bg;
+
+  &:hover {
+    background-color: $upload-button-bg-hover;
+  }
+}
+
+input + label {
+  overflow: hidden;
+
+  width: 150px;
+  padding: 10px;
+
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  border-radius: 5px;
+}
+
+button {
+  font-size: 27px;
+
+  display: inline-block;
+  float: right;
+
+  width: 40px;
+  height: 40px;
+  padding-bottom: 10px;
+
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+
+  color: $delete-button-font;
+  border: none;
+  border-radius: 50%;
+  background-color: $delete-button-bg;
+
+  &:hover {
+    background-color: $delete-button-bg-hover;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+progress::-webkit-progress-bar {
+  background: transparent;
+}
+
+progress::-webkit-progress-value {
+  border-radius: 12px;
+  background: $upload-button-bg;
+}
+
+progress {
+  width: 170px;
+
+  border-radius: 14px;
+  background: transparent;
+}

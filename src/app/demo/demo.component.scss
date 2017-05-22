@@ -1,6 +1,27 @@
-@import '../scss/variables.style';
+@import 'scss/variables.style';
+@import 'scss/bootstrap/bootstrap.min';
 
-h1 {
-  padding-top: 100px;
-  padding-bottom: 100px;
+.gallery {
+  margin: auto;
+
+  background-color: $gallery-bg;
+}
+
+.ru-upload {
+  padding: 10px 30px 10px 10px;
+}
+
+.container {
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  border-radius: 10px;
+  background-color: $container-bg;
+}
+
+.footer {
+  padding: 50px;
+
+  color: $footer-color;
+  background-color: $footer-bg;
 }
