@@ -2,7 +2,7 @@
   <h1>{{i18n.t.home.demo}}</h1>
   <div *ngIf="alertList">
     <div *ngFor="let alert of alertList" class="alert alert-danger alert-dismissable">
-      <a href="#" class="close" (click)="removeAlert(alert)" aria-label="close">&times;</a>
+      <a class="close" (click)="removeAlert(alert)" aria-label="close">&times;</a>
       {{i18n.interpolate(i18n.t.upload.error[alert.messageType], {fileName: alert.file.name})}}
     </div>
   </div>
@@ -24,8 +24,25 @@
                                (onError)="addAlert($event)"></ru-custom-single-upload>
     </div>
   </div>
-
   <hr>
+  <h1><code>ru-image</code></h1>
+  <div class="row">
+    <div class="col-sm-6">
+      <h2>{{i18n.t.home.simpleUse}}</h2>
+      <ru-custom-image [src]="picture"></ru-custom-image>
+    </div>
+    <div class="col-sm-6">
+      <h2>{{i18n.t.home.advancedUse}}</h2>
+      <ru-custom-image [src]="picture"
+                       dimensions="400x400"
+                       quality="10"
+                       roundedCorners="100" background="10,10,255"
+                       watermark="https://www.renuo.ch/images/logo.png">
+      </ru-custom-image>
+    </div>
+  </div>
+</div>
+<div class="container">
   <h1><code>ru-multi-upload</code></h1>
   <h2>{{i18n.t.home.simpleUse}}</h2>
   <div class="ru-upload">
@@ -45,24 +62,6 @@
     (onFileUpload)="updatePictures($event)"
     (onError)="addAlert($event)"></ru-custom-image-multi-upload>
   <hr>
-  <h1><code>ru-image</code></h1>
-  <div class="row">
-    <div class="col-sm-6">
-      <h2>{{i18n.t.home.simpleUse}}</h2>
-      <ru-custom-image [src]="picture"></ru-custom-image>
-    </div>
-    <div class="col-sm-6">
-      <h2>{{i18n.t.home.advancedUse}}</h2>
-      <ru-custom-image [src]="picture"
-                       dimensions="400x400"
-                       quality="10"
-                       roundedCorners="100" background="10,10,255"
-                       watermark="https://www.renuo.ch/images/logo.png">
-      </ru-custom-image>
-    </div>
-  </div>
-
-  <hr>
   <h1><code>ru-gallery</code>
     <div class="btn btn-primary" (click)="addDefaultPictureToGallery()">{{i18n.t.home.addImage}}</div>
   </h1>
@@ -74,17 +73,4 @@
 </div>
 <div class="gallery">
   <ru-gallery [images]="pictures" spacing="1"></ru-gallery>
-</div>
-<div class="footer">
-  <div class="container-fluid text-center">
-    <div class="row">
-      <div class="col-md-6"><h4>{{i18n.t.footer.aboutUpload.title}}</h4>
-        <p>{{i18n.t.footer.aboutUpload.subtitle}}</p>
-        <p><a href="https://github.com/renuo/ngx-renuo-upload" target="_blank">GitHub</a></p>
-      </div>
-      <div class="col-md-6"><h4>{{i18n.t.footer.aboutRenuo.title}}</h4>
-        <p>{{i18n.t.footer.aboutRenuo.subtitle}}</p>
-        <p><a href="https://www.renuo.ch/" target="_blank">Renuo AG Homepage</a></p></div>
-    </div>
-  </div>
 </div>

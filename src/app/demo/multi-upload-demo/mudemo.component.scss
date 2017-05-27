@@ -1,18 +1,12 @@
-@import 'scss/variables.style';
-@import 'scss/bootstrap/bootstrap.min';
-
-.gallery {
-  margin: auto;
-
-  background-color: $gallery-bg;
-}
+@import '../scss/variables.style';
+@import '../scss/bootstrap/bootstrap.min';
 
 .ru-upload {
   padding: 10px 30px 10px 10px;
 }
 
 .container {
-  min-height: 98vh;
+  min-height: 90vh;
   margin-top: 10px;
   margin-bottom: 20px;
 

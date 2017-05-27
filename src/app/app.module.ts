@@ -9,6 +9,12 @@ import { CustomImageComponent } from './demo/custom-image/custom-image.component
 import { CustomMultiUploadComponent } from './demo/custom-multi-upload/custom-multi-upload.component';
 import { CustomSingleUploadComponent } from './demo/custom-single-upload/custom-single-upload.component';
 import { DemoComponent } from './demo/demo.component';
+import { FooterComponent } from './demo/footer/footer.component';
+import { GalleryDemoComponent } from './demo/gallery-demo/gallery-demo.component';
+import { ImageDemoComponent } from './demo/image-demo/image-demo.component';
+import { MultiUploadDemoComponent } from './demo/multi-upload-demo/mudemo.component';
+import { NavComponent } from './demo/nav/nav.component';
+import { SingleUploadDemoComponent } from './demo/single-upload-demo/sudemo.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { ImageComponent } from './image/image.component';
 import { MultiUploadComponent } from './multi-upload/multi-upload.component';
@@ -51,7 +57,13 @@ const APP_PROVIDERS: any = [
     GalleryComponent,
     CustomImageComponent,
     CustomImageMultiUploadComponent,
-    CustomMultiUploadComponent
+    CustomMultiUploadComponent,
+    NavComponent,
+    FooterComponent,
+    SingleUploadDemoComponent,
+    MultiUploadDemoComponent,
+    ImageDemoComponent,
+    GalleryDemoComponent
   ],
   providers: [
     APP_PROVIDERS

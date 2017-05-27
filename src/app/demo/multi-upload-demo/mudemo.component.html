@@ -1,0 +1,49 @@
+<div class="container">
+  <h1><code>ru-multi-upload</code></h1>
+  <div *ngIf="alertList">
+    <div *ngFor="let alert of alertList" class="alert alert-danger alert-dismissable">
+      <a class="close" (click)="removeAlert(alert)" aria-label="close">&times;</a>
+      {{i18n.interpolate(i18n.t.upload.error[alert.messageType], {fileName: alert.file.name})}}
+    </div>
+  </div>
+
+  <h2>{{i18n.t.home.simpleUse}}
+    <small>alle Dateien</small>
+  </h2>
+  <div class="ru-upload">
+    <ru-multi-upload (onFilesChange)="updateFiles($event)"
+                     (onError)="addAlert($event)"></ru-multi-upload>
+  </div>
+
+  <table class="table table-striped">
+    <tbody>
+    <tr *ngFor="let file of files">
+      <td>{{file.name}}</td>
+      <td>{{file.uploadStatusText}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <h2>{{i18n.t.home.customUse}}
+    <small>max 3 Word Dokumente</small>
+  </h2>
+  <ru-custom-multi-upload
+    acceptedFiles="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    maxFilesAllowed="3"
+    (onError)="addAlert($event)"></ru-custom-multi-upload>
+
+  <code><pre>
+&lt;ru-multi-upload acceptedFiles="image/jpeg, image/png"
+    maxFilesAllowed="4"
+    (onFileRemove)="removeFile($event)"
+    (onFilesAdd)="updateFilesList($event)"
+    (onFilesChange)="logFiles($event)"
+    (onFileUpload)="addFile($event)"
+    (onError)="addAlert($event)"&gt;
+&lt;/ru-multi-upload&gt;
+  </pre>
+  </code>
+
+  <hr>
+
+</div>

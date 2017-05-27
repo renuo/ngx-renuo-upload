@@ -12,8 +12,10 @@
   "home": {
     "addImage": "Bild hinzufügen",
     "advancedUse": "Fortgeschrittene Anwendung",
-    "customUse": "Benutzerdefinierte Anwendung",
+    "allFiles": "alle Dateien",
+    "customUse": "Kundenspezifische Anwendung",
     "demo": "Demo",
+    "images": "nur Bilder",
     "simpleUse": "Einfache Anwendung"
   },
   "pageNotFound": {

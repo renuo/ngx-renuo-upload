@@ -1,0 +1,79 @@
+<div class="container">
+  <h1><code>ru-single-upload</code></h1>
+  <div *ngIf="alertList">
+    <div *ngFor="let alert of alertList" class="alert alert-danger alert-dismissable">
+      <a class="close" (click)="removeAlert(alert)" aria-label="close">&times;</a>
+      {{i18n.interpolate(i18n.t.upload.error[alert.messageType], {fileName: alert.file.name})}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <h2>{{i18n.t.home.simpleUse}}
+        <small>nur Bilder</small>
+      </h2>
+      <ru-single-upload acceptedFiles="image/jpeg, image/png"
+                        (onFileUpload)="updateFile($event)"
+                        (onFileRemove)="removeFile()"
+                        (onError)="addAlert($event)">
+      </ru-single-upload>
+    </div>
+    <div class="col-sm-6">
+      <h2>{{i18n.t.home.customUse}}
+        <small>alle Dateien</small>
+      </h2>
+      <ru-custom-single-upload (onFileUpload)="updateFile($event)"
+                               (onFileRemove)="removeFile()"
+                               (onError)="addAlert($event)"></ru-custom-single-upload>
+    </div>
+  </div>
+  <hr>
+
+  <code><pre>
+&lt;ru-single-upload acceptedFiles="image/jpeg, image/png"
+    (onFileAdd)="addTempFile($event)"
+    (onFileChange)="logFile($event)"
+    (onFileRemove)="removeFile($event)"
+    (onFileUpload)="updateFile($event)"
+    (onError)="addAlert($event)"&gt;
+&lt;/ru-single-upload&gt;
+  </pre>
+  </code>
+
+  <hr>
+  <table *ngIf="file" class="table table-striped">
+    <tbody>
+    <tr>
+      <td>ID</td>
+      <td>{{file.id}}</td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>{{file.name}}</td>
+    </tr>
+    <tr>
+      <td>Orginal Name</td>
+      <td>{{file.orginalName}}</td>
+    </tr>
+    <tr>
+      <td>Bereinigter Name</td>
+      <td>{{file.cleanName}}</td>
+    </tr>
+    <tr>
+      <td>Datei Typ</td>
+      <td>{{file.extension}} ({{file.file.type}})</td>
+    </tr>
+    <tr>
+      <td>Datei Grösse</td>
+      <td>{{file.sizeInMb}}</td>
+    </tr>
+    <tr *ngIf="file.file.type === 'image/jpeg' || file.file.type === 'image/png'">
+      <td>Vorschau</td>
+      <td>
+        <ru-image [src]="file.filePath" dimensions="100x100"></ru-image>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

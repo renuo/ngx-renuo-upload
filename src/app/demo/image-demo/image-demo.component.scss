@@ -1,0 +1,11 @@
+@import '../scss/variables.style';
+@import '../scss/bootstrap/bootstrap.min';
+
+.container {
+  min-height: 90vh;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  border-radius: 10px;
+  background-color: $container-bg;
+}
