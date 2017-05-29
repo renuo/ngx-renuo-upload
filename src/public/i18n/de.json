@@ -18,8 +18,8 @@
     "demo": "Demo",
     "fillGallery": "Galerie befüllen",
     "images": "nur Bilder",
-    "onlyWord": "max 3 Word Dokumente",
-    "simpleUse": "Einfache Anwendung"
+    "simpleUse": "Einfache Anwendung",
+    "wordFiles": "max 3 Word Dokumente"
   },
   "nav": {
     "brand": "ngx Renuo Upload",

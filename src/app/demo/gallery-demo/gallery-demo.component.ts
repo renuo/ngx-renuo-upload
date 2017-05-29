@@ -10,7 +10,6 @@ import { UploadResult } from '../../services/upload/upload-result.interface';
 export class GalleryDemoComponent {
   alertList: ErrorMessage[] = [];
   i18n = I18n;
-
   pictures: string[] = [];
 
   updatePictures(file: UploadResult) {

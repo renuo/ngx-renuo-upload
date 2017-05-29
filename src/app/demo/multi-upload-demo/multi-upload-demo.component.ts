@@ -11,7 +11,7 @@ export class MultiUploadDemoComponent {
   alertList: ErrorMessage[] = [];
   i18n = I18n;
 
-  files?: UploadResult[];
+  files: UploadResult[] = [];
 
   updateFiles(files: UploadResult[]) {
     this.files = files;

@@ -8,7 +8,7 @@ import { SingleUploadDemoComponent } from './demo/single-upload-demo/single-uplo
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: DemoComponent},
   {path: 'single-upload', component: SingleUploadDemoComponent},
   {path: 'multi-upload', component: MultiUploadDemoComponent},
