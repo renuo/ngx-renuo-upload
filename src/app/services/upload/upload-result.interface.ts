@@ -10,5 +10,6 @@ export interface UploadResult {
   filePath?: string;
   uploadProgressInPercent: number;
   uploadStatus: number;
-  uploadStatusText: 'unsent' | 'opened' | 'loading' | 'canceled' | 'done';
+  uploadStatusText: 'unsent' | 'waiting for signing' | 'waiting for upload'
+    | 'opened' | 'loading' | 'canceled' | 'done';
 }

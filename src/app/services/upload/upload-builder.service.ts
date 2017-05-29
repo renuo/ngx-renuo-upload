@@ -18,6 +18,8 @@ export class UploadBuilderService {
     uploadResult.filePath = this.fileBuilderService.getFilePath(uploadResult, responseJSON.file_url_path);
     uploadResult.publicUrl = this.fileBuilderService.getPublicUrl(uploadResult, responseJSON.file_prefix);
 
+    uploadResult.uploadStatusText = 'waiting for upload';
+
     return this.requestService.makeRequest({
       method: 'POST',
       url: responseJSON.url,
