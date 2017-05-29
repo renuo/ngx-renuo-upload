@@ -1,0 +1,9 @@
+@import '../scss/variables.style';
+@import '../scss/bootstrap/bootstrap.min';
+@import '../scss/app';
+
+.gallery {
+  margin: auto;
+
+  background-color: $gallery-bg;
+}

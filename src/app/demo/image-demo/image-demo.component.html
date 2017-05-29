@@ -1,0 +1,43 @@
+<div class="container">
+  <h1><code>ru-image</code></h1>
+  <div *ngIf="alertList">
+    <div *ngFor="let alert of alertList" class="alert alert-danger alert-dismissable">
+      <a class="close" (click)="removeAlert(alert)" aria-label="close">&times;</a>
+      {{i18n.interpolate(i18n.t.upload.error[alert.messageType], {fileName: alert.file.name})}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <h2>{{i18n.t.home.simpleUse}}</h2>
+      <ru-custom-image [src]="picture"></ru-custom-image>
+    </div>
+    <div class="col-sm-6">
+      <h2>{{i18n.t.home.advancedUse}}</h2>
+      <ru-custom-image [src]="picture"
+                       dimensions="400x400"
+                       quality="10"
+                       roundedCorners="100" background="10,10,255"
+                       watermark="https://www.renuo.ch/images/logo.png">
+      </ru-custom-image>
+    </div>
+  </div>
+
+  <h4>{{i18n.t.home.changeImage}}</h4>
+  <ru-single-upload acceptedFiles="image/jpeg, image/png"
+                    (onFileUpload)="updatePicture($event)"
+                    (onFileRemove)="deletePicture()"
+                    (onError)="addAlert($event)">
+  </ru-single-upload>
+  <hr>
+
+  <code><pre>
+&lt;ru-img [src]="picture"
+  dimensions="400x400"
+  quality="10"
+  roundedCorners="60" background="10,10,255"
+  watermark="https://www.renuo.ch/images/logo.png"&gt;
+&lt;/ru-img&gt;
+  </pre>
+  </code>
+</div>

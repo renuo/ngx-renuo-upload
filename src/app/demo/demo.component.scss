@@ -12,16 +12,10 @@
 }
 
 .container {
+  min-height: 98vh;
   margin-top: 10px;
   margin-bottom: 20px;
 
   border-radius: 10px;
   background-color: $container-bg;
-}
-
-.footer {
-  padding: 50px;
-
-  color: $footer-color;
-  background-color: $footer-bg;
 }

@@ -12,9 +12,22 @@
   "home": {
     "addImage": "Bild hinzufügen",
     "advancedUse": "Fortgeschrittene Anwendung",
-    "customUse": "Benutzerdefinierte Anwendung",
+    "allFiles": "alle Dateien",
+    "changeImage": "Bild ändern",
+    "customUse": "Kundenspezifische Anwendung",
     "demo": "Demo",
-    "simpleUse": "Einfache Anwendung"
+    "fillGallery": "Galerie befüllen",
+    "images": "nur Bilder",
+    "simpleUse": "Einfache Anwendung",
+    "wordFiles": "max 3 Word Dokumente"
+  },
+  "nav": {
+    "brand": "ngx Renuo Upload",
+    "gallery": "Gallery",
+    "home": "Home",
+    "image": "Bild",
+    "multiUpload": "Multi Upload",
+    "singleUpload": "Single Upload"
   },
   "pageNotFound": {
     "description": "Die gewünschte Seite konnte nicht aufgerufen werden.",
