@@ -8,7 +8,7 @@
   </div>
 
   <h2>{{i18n.t.home.simpleUse}}
-    <small>alle Dateien</small>
+    <small>{{i18n.t.home.allFiles}}</small>
   </h2>
   <div class="ru-upload">
     <ru-multi-upload (onFilesChange)="updateFiles($event)"
@@ -25,7 +25,7 @@
   </table>
 
   <h2>{{i18n.t.home.customUse}}
-    <small>max 3 Word Dokumente</small>
+    <small>{{i18n.t.home.onlyWord}}</small>
   </h2>
   <ru-custom-multi-upload
     acceptedFiles="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
