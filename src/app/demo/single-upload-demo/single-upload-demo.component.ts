@@ -4,17 +4,21 @@ import { ErrorMessage } from '../../services/error-message.interface';
 import { UploadResult } from '../../services/upload/upload-result.interface';
 
 @Component({
-  styleUrls: ['mudemo.component.scss'],
-  templateUrl: 'mudemo.component.html'
+  styleUrls: ['single-upload-demo.component.scss'],
+  templateUrl: 'single-upload-demo.component.html'
 })
-export class MultiUploadDemoComponent {
+export class SingleUploadDemoComponent {
   alertList: ErrorMessage[] = [];
   i18n = I18n;
 
-  files?: UploadResult[];
+  file?: UploadResult;
 
-  updateFiles(files: UploadResult[]) {
-    this.files = files;
+  updateFile(file: UploadResult) {
+    this.file = file;
+  }
+
+  removeFile() {
+    this.file = undefined;
   }
 
   addAlert(errorMessage: ErrorMessage) {
