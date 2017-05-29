@@ -24,7 +24,7 @@ export class MultiUploadComponent {
               private fileBuilderService: FileBuilderService) {}
 
   click(event: Event) {
-    this.addFileFromInputElement(<HTMLInputElement> event.srcElement);
+    this.addFileFromInputElement(<HTMLInputElement> event.srcElement || event.target);
   }
 
   drop(event: Event) {
