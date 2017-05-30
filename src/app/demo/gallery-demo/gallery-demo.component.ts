@@ -13,9 +13,9 @@ export class GalleryDemoComponent {
   pictures: string[] = [];
 
   updatePictures(file: UploadResult) {
-    if (!file.filePath) {return; }
+    if (!file.publicUrl) {return; }
     if (file.file.type === 'image/jpeg' || file.file.type === 'image/png') {
-      this.pictures.push(file.filePath);
+      this.pictures.push(file.publicUrl);
     }
   }
 
