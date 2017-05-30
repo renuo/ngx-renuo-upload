@@ -46,6 +46,8 @@ export class FileBuilderService {
   }
 
   private generateID(): string {
-    return window.crypto.getRandomValues(new Uint32Array(4)).toString().replace(/,/g, '-');
+    const genericWindow: any = window;
+    const cryptoObj = genericWindow.crypto || genericWindow.msCrypto;
+    return cryptoObj.getRandomValues(new Uint32Array(4)).join('-');
   }
 }
