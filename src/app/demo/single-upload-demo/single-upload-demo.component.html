@@ -70,7 +70,7 @@
     <tr *ngIf="file.file.type === 'image/jpeg' || file.file.type === 'image/png'">
       <td>Vorschau</td>
       <td>
-        <ru-image [src]="file.filePath" dimensions="100x100"></ru-image>
+        <ru-image [src]="file.publicUrl" dimensions="100x100"></ru-image>
       </td>
     </tr>
     </tbody>

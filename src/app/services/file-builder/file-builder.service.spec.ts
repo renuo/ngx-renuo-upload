@@ -35,13 +35,13 @@ describe('FileBuilderService', () => {
 
   describe('getPublicUrl', () => {
     it('returns the public Url', () => {
-      expect(service.getPublicUrl(result, '//public/url/')).toEqual('//public/url/nice/file5?.jpg');
+      expect(service.getPublicUrl(result, '//public/url/')).toEqual('//public/url/nicefile5.jpg');
     });
   });
 
   describe('getFilePath', () => {
     it('returns the file path', () => {
-      expect(service.getFilePath(result, 'path/to/file/')).toEqual('path/to/file/nice/file5?.jpg');
+      expect(service.getFilePath(result, 'path/to/file/')).toEqual('path/to/file/nicefile5.jpg');
     });
   });
 });

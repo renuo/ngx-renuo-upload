@@ -15,9 +15,9 @@ export class ImageDemoComponent {
     'renuo-upload-demo-master/u1yv/1d29/f2df/e863/6da6/d70e/788a/ea87/f7b8/o-renuo.png';
 
   updatePicture(file: UploadResult) {
-    if (!file.filePath) {return; }
+    if (!file.publicUrl) {return; }
     if (file.file.type === 'image/jpeg' || file.file.type === 'image/png') {
-      this.picture = file.filePath;
+      this.picture = file.publicUrl;
     }
   }
 

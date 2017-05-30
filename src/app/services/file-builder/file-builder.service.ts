@@ -5,11 +5,11 @@ import { UploadResult } from '../upload/upload-result.interface';
 export class FileBuilderService {
 
   getPublicUrl(file: UploadResult, fileUrlPath: string): string {
-    return fileUrlPath + file.orginalName;
+    return fileUrlPath + file.cleanName;
   }
 
   getFilePath(file: UploadResult, filePrefix: string): string {
-    return filePrefix + file.orginalName;
+    return filePrefix + file.cleanName;
   }
 
   buildResult(file: File): UploadResult {
