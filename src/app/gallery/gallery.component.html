@@ -4,7 +4,9 @@
   </div>
   <div class="gallery-box">
     <div class="thumbnails" [style.width]="getWidth(images.length) + 'px'">
-      <img *ngFor="let image of images" [src]="modifyThumbnail(image)" (click)="setDisplayImage(image)" [style.padding]="spacing + 'px'">
+      <img *ngFor="let image of images" [src]="modifyThumbnail(image)" (click)="setDisplayImage(image)"
+           [style.padding-left.px]="spacing"
+           [style.padding-right.px]="spacing">
     </div>
   </div>
 </div>
