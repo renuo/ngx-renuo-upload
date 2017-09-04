@@ -46,13 +46,13 @@ describe('UploadBuilderService', () => {
       service.uploadToAmazon(fakeResponse, new FileBuilderService().buildResult(new File([''], 'nice/file.jpg'))).subscribe(status => {
         expect(status.uploadProgressInPercent).toEqual(100);
         expect(status.uploadStatus).toEqual(204);
-        expect(status.publicUrl).toEqual('pre/fix/nice/file.jpg');
-        expect(status.filePath).toEqual('//example.com/o/upload-demo-testing/nice/file.jpg');
+        expect(status.filePath).toEqual('pre/fix/nicefile.jpg');
+        expect(status.publicUrl).toEqual('//example.com/o/upload-demo-testing/nicefile.jpg');
         expect(requestService.lastMethod).toBe('POST');
         expect(requestService.lastData.get('key')).toBe('upload-demo');
         expect(requestService.lastData.get('x-amz-algorithm')).toBe('dfe');
         expect(requestService.lastData.get('x-amz-signature')).toBe('qwerty');
-        expect(requestService.lastData.get('file').name).toBe('nice/file.jpg');
+        expect(requestService.lastData.get('file').name).toBe('nicefile.jpg');
         done();
       });
       expect(spy).toHaveBeenCalled();

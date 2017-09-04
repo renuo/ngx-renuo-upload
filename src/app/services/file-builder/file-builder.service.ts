@@ -5,11 +5,11 @@ import { UploadResult } from '../upload/upload-result.interface';
 export class FileBuilderService {
 
   getPublicUrl(file: UploadResult, fileUrlPath: string): string {
-    return fileUrlPath + file.orginalName;
+    return fileUrlPath + file.cleanName;
   }
 
   getFilePath(file: UploadResult, filePrefix: string): string {
-    return filePrefix + file.orginalName;
+    return filePrefix + file.cleanName;
   }
 
   buildResult(file: File): UploadResult {
@@ -46,6 +46,8 @@ export class FileBuilderService {
   }
 
   private generateID(): string {
-    return window.crypto.getRandomValues(new Uint32Array(4)).toString().replace(/,/g, '-');
+    const genericWindow: any = window;
+    const cryptoObj = genericWindow.crypto || genericWindow.msCrypto;
+    return cryptoObj.getRandomValues(new Uint32Array(4)).join('-');
   }
 }

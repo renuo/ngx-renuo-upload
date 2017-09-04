@@ -10,7 +10,7 @@
       <p>{{i18n.t.upload.dropzone.subtitle}}</p></div>
     <div *ngFor="let file of resultFiles" class="image-box">
       <div class="image-thumbnail">
-        <ru-image *ngIf="file.uploadStatusText === 'done'" dimensions="100x100" [src]="file.filePath"></ru-image>
+        <ru-image *ngIf="file.uploadStatusText === 'done'" dimensions="100x100" [src]="file.publicUrl"></ru-image>
         <div *ngIf="file.uploadStatusText !== 'done'">
           {{file.name}}
         </div>

@@ -1,0 +1,9 @@
+@import '../scss/bootstrap/bootstrap.min';
+@import '../scss/variables.style';
+
+.footer {
+  padding: 50px;
+
+  color: $footer-color;
+  background-color: $footer-bg;
+}

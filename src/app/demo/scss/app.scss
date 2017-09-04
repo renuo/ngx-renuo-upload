@@ -1,7 +1,18 @@
+@import '../scss/variables.style';
+
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   margin: 0;
 
   background-color: #4b93c2;
+}
+
+.container {
+  min-height: 90vh;
+  margin-top: 10px;
+  margin-bottom: 20px;
+
+  border-radius: 10px;
+  background-color: $container-bg;
 }

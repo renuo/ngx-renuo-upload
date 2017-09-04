@@ -13,10 +13,10 @@ export class UploadBuilderService {
     const formData = new FormData();
 
     this.buildForm(formData, responseJSON);
-    formData.append('file', uploadResult.file);
+    formData.append('file', uploadResult.file, uploadResult.cleanName);
 
-    uploadResult.filePath = this.fileBuilderService.getFilePath(uploadResult, responseJSON.file_url_path);
-    uploadResult.publicUrl = this.fileBuilderService.getPublicUrl(uploadResult, responseJSON.file_prefix);
+    uploadResult.filePath = this.fileBuilderService.getFilePath(uploadResult, responseJSON.file_prefix);
+    uploadResult.publicUrl = this.fileBuilderService.getPublicUrl(uploadResult, responseJSON.file_url_path);
 
     return this.requestService.makeRequest({
       method: 'POST',

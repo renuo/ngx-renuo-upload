@@ -20,7 +20,7 @@ export class SingleUploadComponent {
               private fileBuilderService: FileBuilderService) {}
 
   upload(event: Event) {
-    this.prepareUploadFile(<HTMLInputElement> event.srcElement);
+    this.prepareUploadFile(<HTMLInputElement> event.srcElement || event.target);
 
     if (this.resultFile) {
       this.uploadService.upload(this.resultFile)
